@@ -1,0 +1,23 @@
+{
+  "name": "cnblog-theme",
+  "version": "1.0.0",
+  "description": "this is lib of cnblog theme.",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dk-plus/cnblog-theme.git"
+  },
+  "keywords": [
+    "cnblog",
+    "themes"
+  ],
+  "author": "dkplus",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dk-plus/cnblog-theme/issues"
+  },
+  "homepage": "https://github.com/dk-plus/cnblog-theme#readme"
+}

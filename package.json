@@ -4,7 +4,8 @@
   "description": "this is lib of cnblog theme.",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack -w --progress",
+    "prod": "webpack -p"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,20 @@
   "bugs": {
     "url": "https://github.com/dk-plus/cnblog-theme/issues"
   },
-  "homepage": "https://github.com/dk-plus/cnblog-theme#readme"
+  "homepage": "https://github.com/dk-plus/cnblog-theme#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.11.0",
+    "less": "^2.3.1"
+  }
 }

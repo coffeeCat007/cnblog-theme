@@ -1,3 +1,147 @@
+/**
+* default => index
+*/
+/**
+* mixin
+* @authors dkplus (dkplus@qq.com)
+* @date    2017-07-22 21:30:36
+* @version $1.0.0$
+*/
+/**
+ * reset
+ * @authors dkplus (dkplus@qq.com)
+ * @date    2017-07-22 21:30:36
+ * @version $1.0.0$
+ */
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+body,
+div,
+dt,
+dl,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+input,
+form,
+a,
+p,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-family: '\5FAE\8F6F\96C5\9ED1', consolas;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
 a {
+  text-decoration: none;
+  display: block;
+}
+img {
+  border: none;
+  display: block;
+}
+/**
+* animate
+*/
+a {
+  font-size: 20px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+a:hover {
+  font-size: 30px;
+}
+/**
+* mixin
+* @authors dkplus (dkplus@qq.com)
+* @date    2017-07-22 21:30:36
+* @version $1.0.0$
+*/
+/**
+ * reset
+ * @authors dkplus (dkplus@qq.com)
+ * @date    2017-07-22 21:30:36
+ * @version $1.0.0$
+ */
+article,
+aside,
+figure,
+figcaption,
+footer,
+header,
+main,
+nav,
+section,
+summary {
+  display: block;
+}
+body,
+div,
+dt,
+dl,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+input,
+form,
+a,
+p,
+textarea {
+  margin: 0;
+  padding: 0;
+  font-family: '\5FAE\8F6F\96C5\9ED1', consolas;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  display: block;
+}
+img {
+  border: none;
+  display: block;
+}
+/**
+* animate
+*/
+div {
+  font-size: 10px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+div:hover {
   font-size: 30px;
 }

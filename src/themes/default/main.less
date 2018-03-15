@@ -1,0 +1,128 @@
+/**
+* default => index
+*/
+@import '../common/mixin.less';
+@import '../common/animate.less';
+@import 'base.less';
+
+#header {
+  .clearfloat();
+  background-color: @base-color4;
+  border-bottom: 5px solid @base-color4 * 1.8;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 20px;
+  #blogTitle {
+    .fl();
+    #lnkBlogLogo {
+      .hide();
+    }
+    #Header1_HeaderTitle {
+      color: #fff;
+    }
+  }
+  #navigator {
+    .fr();
+    & > * {
+      .fl();
+    }
+    #navList >li {
+      .fl();
+      & >a {
+        padding: 0 10px;
+        .transition(0.3s);
+        font-size: @base-font-size * 1.1;
+        &:link {
+          color: #fff;
+        }
+        &:visited {
+          color: @base-color1;
+        }
+        &:hover {
+          background-color: @base-color4 * 1.4;
+        }
+        &:active {
+          background-color: @base-color3;
+        }
+      }
+    }
+    #blog_stats {
+      .fl();
+      & > * {
+        color: @base-color3;
+        font-size: @base-font-size * 0.7;
+      }
+    }
+  }
+}
+
+#main {
+  #mainContent {
+    .day {
+      .transition(0.5s);
+      padding: 5%;
+      text-align: center;
+      &:nth-of-type(even) {
+        background-color: @base-color4 * 3
+      }
+      &:nth-of-type(odd) {
+        background-color: @base-color4 * 3.3
+      }
+      &:hover {
+        background-color: @base-color4 * 2
+      }
+      .dayTitle {
+        .hide();
+      }
+      .postTitle {
+        font-size: @base-font-size * 1.8;
+        margin-bottom:  @base-font-size * 1.5;
+        & > a {
+          color: @base-color4;
+          .transition(0.5s);
+          &:hover {
+            color: #fff;
+            text-shadow: 0 0 3px #fff;
+          }
+        }
+      }
+      .postCon {
+        font-size: @base-font-size * 1.1;
+        margin-bottom: @base-font-size * 1.3;
+          color: @base-color4;
+        .c_b_p_desc_readmore {
+          width: 200px;
+          padding: 5px 10px;
+          font-size: @base-font-size * 1.3;
+          margin: @base-font-size * 1.3 auto 0;
+          border: 3px solid @base-color4;
+          color: @base-color4;
+          .transition(0.5s);
+          &:hover {
+            background-color: @base-color4 * 1.1;
+            color: #fff;
+            text-shadow: 0 0 3px #fff;
+          }
+        }
+      }
+      .postDesc {
+        color: @base-color4;
+        & > a {
+          .hide();
+        }
+      }
+    }
+  }
+  #sideBar {
+
+  }
+}
+
+#footer {
+  background-color: @base-color4;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: @base-color1;
+  font-size: @base-font-size * 1.3;
+}

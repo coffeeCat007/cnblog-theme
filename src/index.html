@@ -891,43 +891,54 @@
                 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
                 <a href="http://www.cnblogs.com">访问</a>网站首页。</div>
             </div>
-            <div id="comment_form_container"><script type="text/javascript" src="//mention.cnblogs.com/bundles/mention.js?id=20160615"></script>
-<div id="commentform_title">发表评论</div>
-<span id="tip_comment" style="color:Red"></span>
-<p>
-昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="dkplus">
-</p>
-<div class="commentbox_main">
-<div class="commentbox_title">
-<div class="commentbox_title_left">评论内容：</div>
-<div class="commentbox_title_right">
-<img id="ubb_quote" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/Text Editor - Quote.png" alt="引用" title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
-<img id="ubb_bold" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/bold.png" alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
-<img id="ubb_url" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/url.png" alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
-<img id="ubb_indent" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/indentation-left.png" alt="缩进" title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
-<img id="ubb_code" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/code.png" alt="代码" title="添加代码" onclick="insertUbbCode()">
-<img id="ubb_img" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/img-03.png" alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
-</div>
-</div>
-<div class="clear"></div>
-<textarea id="tbCommentBody" class="comment_textarea"></textarea>
-</div>
-<p id="commentbox_opt">
-<input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
-<span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
-<a href="javascript:void(0);" onclick="return logout();">退出</a>
-</p>
-<div id="tip_comment2" style="color:Red"></div>
-<p>
-[Ctrl+Enter快捷键提交]
-</p>
-<div style="display:none">
-<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
-<span id="span_parent_id"></span>
-<span id="span_comment_replyto"></span>
-<span id="span_comment_posted"></span>
-</div>
-</div>
+            <div id="comment_form_container">
+              <script type="text/javascript" src="//mention.cnblogs.com/bundles/mention.js?id=20160615"></script>
+              <div id="commentform_title">发表评论</div>
+              <span id="tip_comment" style="color:Red"></span>
+              <p>
+                昵称：
+                <input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="dkplus">
+              </p>
+              <div class="commentbox_main">
+                <div class="commentbox_title">
+                  <div class="commentbox_title_left">评论内容：</div>
+                  <div class="commentbox_title_right">
+                    <img id="ubb_quote" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/Text Editor - Quote.png" alt="引用"
+                      title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
+                    <img id="ubb_bold" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/bold.png" alt="粗体" title="添加粗体"
+                      onclick="insertUBB('tbCommentBody','b')">
+                    <img id="ubb_url" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/url.png" alt="链接" title="添加链接"
+                      onclick="insertUbbUrl('tbCommentBody')">
+                    <img id="ubb_indent" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/indentation-left.png" alt="缩进"
+                      title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
+                    <img id="ubb_code" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/code.png" alt="代码" title="添加代码"
+                      onclick="insertUbbCode()">
+                    <img id="ubb_img" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/img-03.png" alt="图片" title="上传图片"
+                      onclick="OpenImageUploadWindow();">
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <textarea id="tbCommentBody" class="comment_textarea"></textarea>
+              </div>
+              <p id="commentbox_opt">
+                <input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+                <span id="span_comment_canceledit" style="display:none">
+                  <a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a>
+                </span>
+                <a href="javascript:void(0);" onclick="return logout();">退出</a>
+              </p>
+              <div id="tip_comment2" style="color:Red"></div>
+              <p>
+                [Ctrl+Enter快捷键提交]
+              </p>
+              <div style="display:none">
+                <span id="comment_edit_id"></span>
+                <span id="span_parentcomment_id"></span>
+                <span id="span_parent_id"></span>
+                <span id="span_comment_replyto"></span>
+                <span id="span_comment_posted"></span>
+              </div>
+            </div>
             <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
             <div id="ad_t2">
               <a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a>

@@ -64,12 +64,17 @@ img {
 * animate
 */
 #header {
+  position: fixed;
+  top: 0;
   zoom: 1;
   background-color: #34352C;
   border-bottom: 5px solid #5e5f4f;
+  box-sizing: border-box;
+  width: 100%;
   height: 60px;
   line-height: 60px;
   padding: 0 20px;
+  z-index: 1;
 }
 #header:after {
   display: block;
@@ -77,6 +82,16 @@ img {
   content: "";
   visibility: hidden;
   height: 0;
+}
+@media screen and (max-width: 600px) {
+  #header #navList {
+    display: none;
+  }
+}
+@media screen and (max-width: 330px) {
+  #header .blogStats {
+    display: none;
+  }
 }
 #header #blogTitle {
   float: left;
@@ -122,6 +137,12 @@ img {
 #header #navigator #blog_stats > * {
   color: #C9CABB;
   font-size: 11.2px;
+}
+#main {
+  margin-top: 60px;
+}
+#main #mainContent #homepage_top_pager {
+  display: none;
 }
 #main #mainContent .day {
   -webkit-transition: 0.5s;
@@ -186,11 +207,177 @@ img {
 #main #mainContent .day .postDesc > a {
   display: none;
 }
+#main #mainContent .topicListFooter {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 17.6px;
+  background-color: #444539;
+  text-align: center;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+#main #mainContent .topicListFooter:hover {
+  background-color: #393a30;
+}
+#main #mainContent .topicListFooter a {
+  display: inline-block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#main #mainContent .topicListFooter a:link {
+  color: #C9CABB;
+}
+#main #mainContent .topicListFooter a:visited {
+  color: #65655e;
+}
+#main #mainContent .topicListFooter a:active {
+  color: #fff;
+}
+#main #mainContent .topicListFooter a:hover {
+  color: #fff;
+}
+#main #mainContent .topicListFooter .pager {
+  color: #65655e;
+}
+#main #mainContent .topicListFooter .pager > * {
+  margin: 0 10px;
+}
+#main #sideBar {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  top: 60px;
+  left: initial;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: #1a1b16;
+  border-left: 5px solid #34352C;
+  opacity: 0.9;
+  transform: translate(280px);
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+  overflow: scroll;
+}
+#main #sideBar:hover {
+  transform: translate(0);
+}
+@media (max-width: 600px) {
+  #main #sideBar {
+    position: static;
+    width: 100%;
+    transform: translate(0);
+    border-left: none;
+    overflow: hidden;
+  }
+}
+#main #sideBar #sideBarMain > div {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+#main #sideBar #sideBarMain > div:hover {
+  background-color: #3c3d38;
+}
+#main #sideBar #sideBarMain a {
+  display: inline-block;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 5px;
+}
+#main #sideBar #sideBarMain a:link {
+  color: #C9CABB;
+}
+#main #sideBar #sideBarMain a:visited {
+  color: #65655e;
+}
+#main #sideBar #sideBarMain a:active {
+  color: #fff;
+}
+#main #sideBar #sideBarMain a:hover {
+  color: #fff;
+}
+#main #sideBar #sideBarMain > div {
+  padding: 20px;
+  background-color: #24251f;
+  color: #fff;
+}
+#main #sideBar #sideBarMain h3 {
+  margin-bottom: 10px;
+}
+#main #sideBar #sideBarMain #leftcontentcontainer .sidebar-block {
+  margin-bottom: 40px;
+}
+#main #sideBar #sideBarMain #blogCalendar {
+  width: 100%;
+}
+#main #sideBar #sideBarMain #blogCalendar .CalDayHeader {
+  background-color: #393a30;
+  padding: 5px;
+}
+#main #sideBar #sideBarMain #blogCalendar tr {
+  font-size: 16px;
+  height: 24px;
+  line-height: 24px;
+}
+#main #sideBar #sideBarMain #blogCalendar tr td {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#main #sideBar #sideBarMain #blogCalendar tr td a {
+  margin: 0;
+}
+#main #sideBar #sideBarMain #blogCalendar tr td a u {
+  text-decoration: none;
+  text-shadow: 0 0 3px #fff;
+}
+#main #sideBar #sideBarMain #blogCalendar tr td:not([colspan='7']):hover {
+  background-color: #535546;
+}
+#main #sideBar #sideBarMain #blogCalendar .CalTitle {
+  width: 100%;
+}
+#main #sideBar #sideBarMain #blogCalendar .CalTitle .CalNextPrev {
+  background: #1f201a;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+#main #sideBar #sideBarMain #blogCalendar .CalTitle td[align="center"]:hover {
+  background: none;
+}
+#main #sideBar #sideBarMain #blogCalendar .CalOtherMonthDay {
+  color: #535546;
+}
+#main #sideBar #sideBarMain #RecentCommentsBlock .recent_comment_title {
+  font-size: 16px;
+}
+#main #sideBar #sideBarMain #RecentCommentsBlock .recent_comment_body {
+  font-size: 14.4px;
+}
+#main #sideBar #sideBarMain #RecentCommentsBlock .recent_comment_author {
+  font-size: 12.8px;
+  margin-bottom: 15px;
+  text-align: right;
+}
 #footer {
   background-color: #34352C;
   height: 50px;
   line-height: 50px;
   text-align: center;
   color: #F5F6EB;
-  font-size: 20.8px;
+  font-size: 17.6px;
 }

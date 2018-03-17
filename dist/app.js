@@ -71,10 +71,10 @@
 
 
 var $ = __webpack_require__(1);
-var path = __webpack_require__(11);
-var config = __webpack_require__(2);
+var path = __webpack_require__(2);
+var config = __webpack_require__(4);
 
-__webpack_require__(4);
+__webpack_require__(5);
 
 /***/ }),
 /* 1 */
@@ -10451,34 +10451,6 @@ return jQuery;
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-var config = {
-  opt_theme: {
-    name: 'default'
-  }
-};
-
-module.exports = config;
-
-/***/ }),
-/* 3 */,
-/* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */,
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
 /* WEBPACK VAR INJECTION */(function(process) {// Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -10704,10 +10676,10 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 12 */
+/* 3 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -10895,6 +10867,27 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var config = {
+  opt_theme: {
+    name: 'default'
+  }
+};
+
+module.exports = config;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

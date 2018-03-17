@@ -73,7 +73,15 @@
 
 
           <!--done-->
-
+          <div id="homepage_top_pager" class="topicListFooter">
+            <div class="pager">
+              共3页:&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=1">上一页</a>&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=1">1</a>&nbsp;2&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=3">3</a>&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=3">下一页</a>&nbsp;
+            </div>
+          </div>
 
           <div class="day">
             <div class="dayTitle">
@@ -309,7 +317,15 @@
               <a href="http://www.cnblogs.com/dkplus/default.html?page=2">下一页</a>
             </div>
           </div>
-
+          <div id="homepage1_HomePageDays_homepage_bottom_pager" class="topicListFooter">
+            <div class="pager">
+              共3页:&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=1">上一页</a>&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=1">1</a>&nbsp;2&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=3">3</a>&nbsp;
+              <a href="http://www.cnblogs.com/dkplus/default.html?page=3">下一页</a>&nbsp;
+            </div>
+          </div>
 
         </div>
         <!--end: forFlow -->
@@ -322,19 +338,276 @@
           <!--done-->
           <div class="newsItem">
             <h3 class="catListTitle">公告</h3>
-            <div id="blog-news"></div>
+            <div id="blog-news">
+              <div id="profile_block">昵称：
+                <a href="https://home.cnblogs.com/u/dkplus/">dkplus</a>
+                <br>园龄：
+                <a href="https://home.cnblogs.com/u/dkplus/" title="入园时间：2016-12-25">1年2个月</a>
+                <br>粉丝：
+                <a href="https://home.cnblogs.com/u/dkplus/followers/">29</a>
+                <br>关注：
+                <a href="https://home.cnblogs.com/u/dkplus/followees/">2</a>
+                <div id="p_b_follow">
+                  <a href="javascript:void(0);" onclick="follow('85f7974f-90ca-e611-845c-ac853d9f53ac')">+加关注</a>
+                </div>
+                <script>getFollowStatus('85f7974f-90ca-e611-845c-ac853d9f53ac')</script>
+              </div>
+            </div>
+            <script type="text/javascript">loadBlogNews();</script>
           </div>
 
-          <div id="blog-calendar" style="display:none"></div>
+          <div id="blog-calendar" style="">
+            <table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+              <tbody>
+                <tr>
+                  <td colspan="7">
+                    <table class="CalTitle" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="CalNextPrev">
+                            <a href="javascript:void(0);" onclick="loadBlogCalendar('2018/02/01');return false;">&lt;</a>
+                          </td>
+                          <td align="center">2018年3月</td>
+                          <td class="CalNextPrev" align="right">
+                            <a href="javascript:void(0);" onclick="loadBlogCalendar('2018/04/01');return false;">&gt;</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+                  <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+                  <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+                  <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+                  <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+                  <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+                  <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+                </tr>
+                <tr>
+                  <td class="CalOtherMonthDay" align="center">25</td>
+                  <td class="CalOtherMonthDay" align="center">26</td>
+                  <td class="CalOtherMonthDay" align="center">27</td>
+                  <td class="CalOtherMonthDay" align="center">28</td>
+                  <td align="center">
+                    <a href="http://www.cnblogs.com/dkplus/archive/2018/03/01.html">
+                      <u>1</u>
+                    </a>
+                  </td>
+                  <td align="center">
+                    <a href="http://www.cnblogs.com/dkplus/archive/2018/03/02.html">
+                      <u>2</u>
+                    </a>
+                  </td>
+                  <td class="CalWeekendDay" align="center">3</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">4</td>
+                  <td align="center">5</td>
+                  <td align="center">6</td>
+                  <td align="center">7</td>
+                  <td align="center">
+                    <a href="http://www.cnblogs.com/dkplus/archive/2018/03/08.html">
+                      <u>8</u>
+                    </a>
+                  </td>
+                  <td align="center">9</td>
+                  <td class="CalWeekendDay" align="center">10</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">11</td>
+                  <td align="center">12</td>
+                  <td align="center">13</td>
+                  <td align="center">14</td>
+                  <td align="center">15</td>
+                  <td align="center">16</td>
+                  <td class="CalTodayDay" align="center">17</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">18</td>
+                  <td align="center">19</td>
+                  <td align="center">20</td>
+                  <td align="center">21</td>
+                  <td align="center">22</td>
+                  <td align="center">23</td>
+                  <td class="CalWeekendDay" align="center">24</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">25</td>
+                  <td align="center">26</td>
+                  <td align="center">27</td>
+                  <td align="center">28</td>
+                  <td align="center">29</td>
+                  <td align="center">30</td>
+                  <td class="CalWeekendDay" align="center">31</td>
+                </tr>
+                <tr>
+                  <td class="CalOtherMonthDay" align="center">1</td>
+                  <td class="CalOtherMonthDay" align="center">2</td>
+                  <td class="CalOtherMonthDay" align="center">3</td>
+                  <td class="CalOtherMonthDay" align="center">4</td>
+                  <td class="CalOtherMonthDay" align="center">5</td>
+                  <td class="CalOtherMonthDay" align="center">6</td>
+                  <td class="CalOtherMonthDay" align="center">7</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <script type="text/javascript">loadBlogDefaultCalendar();</script>
 
           <div id="leftcontentcontainer">
-            <div id="blog-sidecolumn"></div>
+            <div id="blog-sidecolumn">
+              <div id="sidebar_search" class="sidebar-block"></div>
+              <div id="sidebar_toptags" class="sidebar-block">
+                <div class="catListTag">
+                  <h3 class="catListTitle">我的标签</h3>
+                  <ul>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E5%89%8D%E7%AB%AF/">前端</a>(11)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/canvas/">canvas</a>(3)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/css3%E5%8A%A8%E7%94%BB/">css3动画</a>(3)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E5%B8%83%E5%B1%80/">布局</a>(2)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E6%B5%AE%E5%8A%A8/">浮动</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">清除浮动</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/git/">git</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/npm/">npm</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/webpack/">webpack</a>(1)</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="sidebar_categories">
+              </div>
+              <div id="sidebar_recentcomments" class="sidebar-block">
+                <div id="recent_comments_wrap">
+                  <div class="catListComment">
+                    <h3 class="catListTitle">最新评论</h3>
+
+                    <div id="RecentCommentsBlock">
+                      <ul>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html#3906687">1. Re:写给后端的前端笔记：定位（position）</a>
+                        </li>
+                        <li class="recent_comment_body">@崔宏宇_chydiv5本来的位置为什么紧贴紧贴在div3的下面最左边-------------------div是块级元素，不把布局改成fixed和absolute的情况下占满一行空间，所以div3......</li>
+                        <li class="recent_comment_author">--dkplus</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html#3906605">2. Re:写给后端的前端笔记：定位（position）</a>
+                        </li>
+                        <li class="recent_comment_body">@dkplus谢谢楼主，再问一下，div5本来的位置为什么紧贴紧贴在div3的下面最左边，另外再问下，楼主你的背影怎么这么炫酷，是怎么做的...</li>
+                        <li class="recent_comment_author">--崔宏宇_chy</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html#3902558">3. Re:用canvas给自己的博客园加背景（一）</a>
+                        </li>
+                        <li class="recent_comment_body">@bob_muse谢谢你的建议，同好加油...</li>
+                        <li class="recent_comment_author">--dkplus</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html#3902541">4. Re:用canvas给自己的博客园加背景（一）</a>
+                        </li>
+                        <li class="recent_comment_body">对于游戏向挺好的，兼顾游戏的装饰性和博客的严肃。不要千人一面嘛。建议：1.背景原点膨胀再快一点，显得流畅。膨胀的再小点，保证背景的层次不要跳。2.留空白按大小主次再调整一下，大板块再空多点，小块再紧凑......</li>
+                        <li class="recent_comment_author">--bob_muse</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html#3850206">5. Re:canvas动画3：交互</a>
+                        </li>
+                        <li class="recent_comment_body">牛逼啊！</li>
+                        <li class="recent_comment_author">--郑州的文武</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sidebar_topviewedposts" class="sidebar-block">
+                <div id="topview_posts_wrap">
+                  <div class="catListView">
+                    <h3 class="catListTitle">阅读排行榜</h3>
+                    <div id="TopViewPostsBlock">
+                      <ul>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html">1. canvas动画3：交互(1112)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7625511.html">2. 用canvas给自己的博客园加背景（二）(1032)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7613673.html">3. 进入css3动画世界（二）(809)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html">4. 用canvas给自己的博客园加背景（一）(772)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html">5. 写给后端的前端笔记：定位（position）(689)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sidebar_topcommentedposts" class="sidebar-block">
+                <div id="topfeedback_posts_wrap">
+                  <div class="catListFeedback">
+                    <h3 class="catListTitle">评论排行榜</h3>
+                    <div id="TopFeedbackPostsBlock">
+                      <ul>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7625511.html">1. 用canvas给自己的博客园加背景（二）(27)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html">2. canvas动画3：交互(16)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html">3. 写给后端的前端笔记：定位（position）(10)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7613673.html">4. 进入css3动画世界（二）(6)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html">5. 用canvas给自己的博客园加背景（一）(4)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sidebar_topdiggedposts" class="sidebar-block">
+                <div id="topdigg_posts_wrap">
+                  <div class="catListView">
+                    <h3 class="catListTitle">推荐排行榜</h3>
+                    <div id="TopDiggPostsBlock">
+                      <ul>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html">1. canvas动画3：交互(13)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7625511.html">2. 用canvas给自己的博客园加背景（二）(9)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html">3. 用canvas给自己的博客园加背景（一）(3)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7602284.html">4. 进入css3动画世界（一）(3)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7613673.html">5. 进入css3动画世界（二）(2)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">loadBlogSideColumn();</script>
           </div>
 
         </div>
         <!--end: sideBarMain -->
       </div>
-      <!--end: sideBar 侧边栏容器 -->
       <div class="clear"></div>
     </div>
     <!--end: main -->

@@ -4,11 +4,240 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>用canvas给自己的博客园加背景（二） - dkplus - 博客园</title>
-<link href="app.css" rel="stylesheet"></head>
+  <link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=-hy83QNg62d4qYibixJzxMJkbf1P9fTBlqv7SK5zVL01">
+  <link id="MainCss" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory.css?v=EanP3quXYv9G0oFCmz4BNBHvmK7M_Si1iD1EpUHL_441">
+  <link type="text/css" rel="stylesheet" href="/blog/customcss/324750.css?v=B9mhoIdTY67K2TZXya92MCjve%2bw%3d">
+  <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/SimpleMemory/bundle-SimpleMemory-mobile.css?v=XGOE8_i3XCsAIQHcgl5c_8VAMMKRkj0W3Eckyc8qbso1">
+  <link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/dkplus/rss">
+  <link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/dkplus/rsd.xml">
+  <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/dkplus/wlwmanifest.xml">
+  <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+  <script src="//common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+  <script type="text/javascript">var currentBlogApp = 'dkplus', cb_enable_mathjax = false; var isLogined = false;</script>
+  <script src="/bundles/blog-common.js?v=O-NTEmnhjbG7lSYLc3yeqkrVxfMJyY9iXf4xyjlKikw1" type="text/javascript"></script>
+</head>
 
 <body>
   <a name="top"></a>
   <!--PageBeginHtml Block Begin-->
+  <div class="box">
+    <div class="font" id="d">
+      d
+    </div>
+    <div class="font" id="k">
+      k
+    </div>
+    <div class="font" id="p">
+      p
+    </div>
+    <div class="font" id="l">
+      l
+    </div>
+    <div class="font" id="u">
+      u
+    </div>
+    <div class="font" id="s">
+      s
+    </div>
+  </div>
+  <canvas id="canvas" width="830" height="662"></canvas>
+  <style type="text/css">
+    #canvas {
+      position: fixed;
+      top: 0;
+      z-index: -100;
+    }
+  </style>
+  <script>/**
+* 
+* @authors dkplus (dkplus@qq.com)
+* @date    2017-10-01 20:37:26
+* @version $1.0$
+*/
+
+    var canvas = document.querySelector("#canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    var ctx = canvas.getContext("2d");
+
+    // ctx.strokeStyle = "#777";
+    // ctx.arc(100,100,50,Math.PI/180*0,Math.PI/180*360,false);
+    // ctx.stroke();
+
+    // for (var i = 0; i < 100; i++) {
+    // 	ctx.strokeStyle = "#777";
+    // 	ctx.arc(x,y,50,Math.PI/180*0,Math.PI/180*360,false);
+    // 	ctx.stroke();
+    // 	x += 1;
+    // 	y += 1;
+    // }
+    var mouse = {
+      x: undefined,
+      y: undefined
+    }
+    window.addEventListener("mousemove", function (event) {
+      mouse.x = event.x;
+      mouse.y = event.y;
+      // console.log(mouse);
+    });
+    window.addEventListener("resize", function () {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      init();
+    })
+    var maxRadius = 40;
+    // var minRadius = 2;
+    var colorArray = [
+      '#58D68D',
+      '#E67F22',
+      '#3598DB',
+      '#E84C3D',
+      '#9A59B5',
+      '#27AE61',
+      '#D25400',
+      '#BEC3C7',
+      '#297FB8'
+    ]
+    function Circle(x, y, dx, dy, radius) {
+      this.x = x;
+      this.y = y;
+      this.dx = dx;
+      this.dy = dy;
+      this.radius = radius;
+      this.minRadius = radius;
+      this.bg = colorArray[Math.floor(Math.random() * colorArray.length)];
+
+      this.draw = function () {
+        ctx.beginPath();
+        ctx.strokeStyle = "#777";
+        // var color = Math.floor(Math.random()*100000);
+        // ctx.fillStyle = "#"+color;
+        // ctx.fillStyle = "#777";
+        ctx.fillStyle = this.bg;
+        ctx.arc(this.x, this.y, this.radius, Math.PI / 180 * 0, Math.PI / 180 * 360, false);
+        // ctx.stroke();
+        ctx.fill();
+      }
+      this.update = function () {
+
+        if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
+          this.dx = -this.dx;
+        }
+        if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
+          this.dy = -this.dy;
+        }
+        this.x += this.dx;
+        this.y += this.dy;
+
+        if (mouse.x - this.x < 50 && mouse.x - this.x > -50 && mouse.y - this.y < 50 && mouse.y - this.y > -50) {
+          if (this.radius < maxRadius) {
+            this.radius += 1;
+          }
+        } else if (this.radius > this.minRadius) {
+          this.radius -= 1;
+        }
+
+        this.draw();
+
+      }
+    }
+    // var c = new Circle(x, y, dx, dy, radius);
+
+    var circleArray = [];
+    function init() {
+      circleArray = []
+      for (var i = 0; i < 300; i++) {
+        var x = Math.random() * window.innerWidth;
+        var y = Math.random() * window.innerHeight;
+        var dx = (Math.random() - 0.5);
+        var dy = (Math.random() - 0.5);
+        var radius = Math.random() * 3 + 1;
+        circleArray.push(new Circle(x, y, dx, dy, radius));
+      }
+    }
+    init();
+    function animate() {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      requestAnimationFrame(animate);
+
+      for (var i = 0; i < circleArray.length; i++) {
+        circleArray[i].update();
+      }
+      // c.update();
+      // ctx.beginPath();
+      // ctx.strokeStyle = "#777";
+      // ctx.arc(x,y,radius,Math.PI/180*0,Math.PI/180*360,false);
+      // ctx.stroke();
+      // if (x + radius > innerWidth || x - radius < 0 ) {
+      // 	dx = -dx;
+      // }
+      // if (y + radius > innerHeight || y - radius < 0 ) {
+      // 	dy = -dy;
+      // }
+      // x += dx;
+      // y += dy;
+    }
+    animate();
+    window.onload = function () {
+      var i1 = document.getElementById("ubb_quote");
+      var i2 = document.getElementById("ubb_bold");
+      var i3 = document.getElementById("ubb_url");
+      var i4 = document.getElementById("ubb_indent");
+      var i5 = document.getElementById("ubb_code");
+      var i6 = document.getElementById("ubb_img");
+
+      i1.src = "http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/Text Editor - Quote.png";
+      i2.src = "http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/bold.png";
+      i3.src = "http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/url.png";
+      i4.src = "http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/indentation-left.png";
+      i5.src = "http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/code.png";
+      i6.src = "http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/img-03.png";
+    }
+  </script>
+
+  <script type="text/javascript">
+    // window.onload = function () {
+    var gotop = document.createElement("div");
+    gotop.id = "gotop";
+    gotop.className = "slideInUp";
+    document.body.appendChild(gotop);
+    // var gotop = document.getElementById('gotop');
+    document.onscroll = function () {
+      if (document.documentElement.scrollTop > 500) {
+        gotop.style.display = "block";
+      } else {
+        gotop.style.display = "none";
+      }
+    }
+    // var timer;
+    // gotop.onclick = function () {
+    // 	timer = setInterval(function () {
+    // 		if (document.documentElement.scrollTop>0) {
+    // 			document.documentElement.scrollTop += -600;
+    // 		}else{
+    // 			clearInterval(timer);
+    // 		}				
+    // 	},1000/60);
+    // }		
+    // }
+
+    // var gotop = document.getElementById('gotop');
+    var goTopAni;
+    gotop.onclick = function () {
+      goTop();
+    }
+    function goTop() {
+      if (document.documentElement.scrollTop > 0) {
+        document.documentElement.scrollTop += -600;
+        goTopAni = requestAnimationFrame(goTop);
+      } else {
+        cancelAnimationFrame(goTopAni);
+      }
+    }
+  </script>
+  <div id="gotop" class="slideInUp" style="display: block;"></div>
   <!--PageBeginHtml Block End-->
 
   <!--done-->
@@ -89,6 +318,13 @@
                     <h2 id="requestanimationframecallback">requestAnimationFrame(callback)</h2>
                     <p>这是一个用于制作逐帧动画的函数，在它出现之前，我们的动画基本用setTimeout或者setInterval制作。</p>
                     <p>我们可以尝试声明一个animate函数：</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="co"><span class="hljs-comment">//这个函数会在控制台无限输出"dkplus-canvas"</span></span>
+(<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="va"><span class="hljs-built_in">console</span></span>.<span class="at">log</span>(<span class="st"><span class="hljs-string">"dkplus-canvas"</span></span>)<span class="op">;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre>
+                    </div>
                     <p>此时打开控制台看一下效果。</p>
                     <p>可以看到animate()里面的操作在无限执行，而我们用canvas绘制动画也可以选择这样的思路，无限刷新画布，无限绘制画布。</p>
                     <div class="sourceCode">
@@ -104,6 +340,26 @@
 <span class="op">}</span>)()<span class="op">;</span></code></pre>
                     </div>
                     <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/cb0uefhr" allowfullscreen="allowfullscreen"
+                      frameborder="0">
+                    </iframe>
+                    <p>这段代码画出来的圆和只画一次的圆是有区别的，明显很多个圆叠加在一起了。</p>
+                    <p>我们试着改一改代码：</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="co"><span class="hljs-comment">//初始化坐标</span></span>
+<span class="kw"><span class="hljs-keyword">var</span></span> x <span class="op">=</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> y <span class="op">=</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span>
+(<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//重新定义开始坐标，试着注释掉这一行看看效果有何不同</span></span>
+    <span class="va">ctx</span>.<span class="at">beginPath</span>()<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">arc</span>(x<span class="op">,</span>y<span class="op">,</span><span class="dv"><span class="hljs-number">40</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">PI</span><span class="op">*</span><span class="dv"><span class="hljs-number">2</span></span><span class="op">,</span><span class="kw"><span class="hljs-literal">false</span></span>)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">stroke</span>()<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//动态修改坐标</span></span>
+    x <span class="op">+=</span> <span class="dv"><span class="hljs-number">1</span></span><span class="op">;</span>
+    y <span class="op">+=</span> <span class="dv"><span class="hljs-number">1</span></span><span class="op">;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre>
+                    </div>
+                    <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/qokdvyx6" allowfullscreen="allowfullscreen"
                       frameborder="0">
                     </iframe>
                     <h2 id="刷新画布">刷新画布</h2>
@@ -126,9 +382,124 @@
                     <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/cy7ng5eu" allowfullscreen="allowfullscreen"
                       frameborder="0">
                     </iframe>
+                    <p>保存打开浏览器，效果确实不一样了，看到的是一个圆圈在运动。</p>
+                    <h2 id="反弹条件">反弹条件</h2>
+                    <p>但是这个圆圈只会斜向下走，我们得做一些判断，让它反弹回来。比如说当圆心+半径超出浏览器边界时，我们把
+                      <code>x+=1</code>变为
+                      <code>x+= -1</code>。这里的1其实代表着速度，我们可以把速度储存到一个变量里，方便修改。</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="co"><span class="hljs-comment">//我把参数都设为变量</span></span>
+<span class="kw"><span class="hljs-keyword">var</span></span> x <span class="op">=</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> y <span class="op">=</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> dx <span class="op">=</span> <span class="dv"><span class="hljs-number">6</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> dy <span class="op">=</span> <span class="dv"><span class="hljs-number">6</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> radius <span class="op">=</span> <span class="dv"><span class="hljs-number">40</span></span><span class="op">;</span>
+(<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">clearRect</span>(<span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span>innerWidth<span class="op">,</span>innerHeight)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">beginPath</span>()<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">arc</span>(x<span class="op">,</span>y<span class="op">,</span>radius<span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">PI</span><span class="op">*</span><span class="dv"><span class="hljs-number">2</span></span><span class="op">,</span><span class="kw"><span class="hljs-literal">false</span></span>)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">stroke</span>()<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//当触及边界时进行反弹</span></span>
+    <span class="cf"><span class="hljs-keyword">if</span></span> (x<span class="op">+</span>radius<span class="op">&gt;</span>innerWidth <span class="op">||</span> x<span class="op">-</span>radius<span class="op">&lt;</span><span class="dv"><span class="hljs-number">0</span></span>) <span class="op">{</span>
+        dx <span class="op">=</span> <span class="op">-</span>dx<span class="op">;</span>
+    <span class="op">}</span>
+    <span class="cf"><span class="hljs-keyword">if</span></span> (y<span class="op">+</span>radius<span class="op">&gt;</span>innerHeight <span class="op">||</span> y<span class="op">-</span>radius<span class="op">&lt;</span><span class="dv"><span class="hljs-number">0</span></span>) <span class="op">{</span>
+        dy <span class="op">=</span> <span class="op">-</span>dy<span class="op">;</span>
+    <span class="op">}</span>
+    x <span class="op">+=</span> dx<span class="op">;</span>
+    y <span class="op">+=</span> dy<span class="op">;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre>
+                    </div>
+                    <p>既然都设了变量，为何不让变量变起来呢？设为随机数可好？</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="co"><span class="hljs-comment">//半径暂且不设随机，以后有用</span></span>
+<span class="kw"><span class="hljs-keyword">var</span></span> x <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span>innerWidth<span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> y <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span>innerHeight<span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> dx <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">5</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> dy <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">5</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> radius <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">40</span></span><span class="op">;</span>
+})()<span class="op">;</span></code></pre>
+                    </div>
+                    <h2 id="面向对象">面向对象</h2>
                     <blockquote>
                       <p>本人对面向对象这块不太熟，可能说的不太好请见谅</p>
                     </blockquote>
+                    <p>好，现在我们声明一个function为Circle，假装我们有一个Circle类，把这些变量传进去，同时把我们刚才用于绘图的、用于刷新的代码都填进去。</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="kw"><span class="hljs-keyword">var</span></span> x <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span>innerWidth<span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> y <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span>innerHeight<span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> dx <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">5</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> dy <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">5</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> radius <span class="op">=</span> <span class="dv"><span class="hljs-number">40</span></span><span class="op">;</span>
+<span class="co"><span class="hljs-comment">//这是一个Circle对象</span></span>
+<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">Circle</span></span></span><span class="hljs-function">(<span class="hljs-params">x</span></span><span class="op"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params">y</span></span><span class="op"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params">dx</span></span><span class="op"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params">dy</span></span><span class="op"><span class="hljs-function"><span class="hljs-params">,</span></span></span><span class="hljs-function"><span class="hljs-params">radius</span>) </span><span class="op">{</span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">x</span> <span class="op">=</span> x<span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">y</span> <span class="op">=</span> y<span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">dx</span> <span class="op">=</span> dx<span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">dy</span> <span class="op">=</span> dy<span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">raidus</span> <span class="op">=</span> radius<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//这是绘制方法</span></span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">draw</span> <span class="op">=</span> <span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> (<span class="hljs-params"></span>) </span><span class="op">{</span>
+        <span class="va">ctx</span>.<span class="at">beginPath</span>()<span class="op">;</span>
+        <span class="va">ctx</span>.<span class="at">arc</span>(x<span class="op">,</span>y<span class="op">,</span>radius<span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">PI</span><span class="op">*</span><span class="dv"><span class="hljs-number">2</span></span><span class="op">,</span><span class="kw"><span class="hljs-literal">false</span></span>)<span class="op">;</span>
+        <span class="va">ctx</span>.<span class="at">stroke</span>()<span class="op">;</span>
+    <span class="op">}</span>
+    <span class="co"><span class="hljs-comment">//这是刷新方法</span></span>
+    <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">update</span> <span class="op">=</span> <span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> (<span class="hljs-params"></span>) </span><span class="op">{</span>
+        <span class="cf"><span class="hljs-keyword">if</span></span> (x<span class="op">+</span>radius<span class="op">&gt;</span>innerWidth <span class="op">||</span> x<span class="op">-</span>radius<span class="op">&lt;</span><span class="dv"><span class="hljs-number">0</span></span>) <span class="op">{</span>
+            dx <span class="op">=</span> <span class="op">-</span>dx<span class="op">;</span>
+        <span class="op">}</span>
+        <span class="cf"><span class="hljs-keyword">if</span></span> (y<span class="op">+</span>radius<span class="op">&gt;</span>innerHeight <span class="op">||</span> y<span class="op">-</span>radius<span class="op">&lt;</span><span class="dv"><span class="hljs-number">0</span></span>) <span class="op">{</span>
+            dy <span class="op">=</span> <span class="op">-</span>dy<span class="op">;</span>
+        <span class="op">}</span>
+        x <span class="op">+=</span> dx<span class="op">;</span>
+        y <span class="op">+=</span> dy<span class="op">;</span>
+        <span class="co"><span class="hljs-comment">//每刷新一次重新绘图</span></span>
+        <span class="kw"><span class="hljs-keyword">this</span></span>.<span class="at">draw</span>()<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span>
+<span class="co"><span class="hljs-comment">//new一个Circle对象</span></span>
+<span class="kw"><span class="hljs-keyword">var</span></span> c <span class="op">=</span> <span class="kw"><span class="hljs-keyword">new</span></span> <span class="at">Circle</span>(x<span class="op">,</span>y<span class="op">,</span>dx<span class="op">,</span>dy<span class="op">,</span>radius)<span class="op">;</span>
+<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">clearRect</span>(<span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span>innerWidth<span class="op">,</span>innerHeight)<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//对象c调用刷新方法</span></span>
+    <span class="va">c</span>.<span class="at">update</span>()<span class="op">;</span>
+<span class="op">};</span>
+<span class="at">animate</span>()<span class="op">;</span></code></pre>
+                    </div>
+                    <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/zdvbilqk" allowfullscreen="allowfullscreen"
+                      frameborder="0">
+                    </iframe>
+                    <h2 id="多圆">多圆</h2>
+                    <p>现在我们已经实现了一个圆在画布上的弹跳，那么我们要怎么实现很多圆弹跳呢？</p>
+                    <p>我们可以用for循环，循环随机参数，循环制造圆，循环刷新不同的圆。那么我们先引进一个圆的数组，一切都是为了方便操作：</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="co"><span class="hljs-comment">//圆的数组</span></span>
+<span class="kw"><span class="hljs-keyword">var</span></span> cirleArray <span class="op">=</span> []<span class="op">;</span>
+<span class="co"><span class="hljs-comment">//循环制造不同的圆，放进数组</span></span>
+<span class="cf"><span class="hljs-keyword">for</span></span> (<span class="kw"><span class="hljs-keyword">var</span></span> i <span class="op">=</span> <span class="dv"><span class="hljs-number">0</span></span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+    <span class="kw"><span class="hljs-keyword">var</span></span> x <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span>innerWidth<span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">var</span></span> y <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span>innerHeight<span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">var</span></span> dx <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">5</span></span><span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">var</span></span> dy <span class="op">=</span> <span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">random</span>()<span class="op">*</span><span class="dv"><span class="hljs-number">5</span></span><span class="op">;</span>
+    <span class="kw"><span class="hljs-keyword">var</span></span> radius <span class="op">=</span> <span class="dv"><span class="hljs-number">40</span></span><span class="op">;</span>
+    <span class="va">cirleArray</span>.<span class="at">push</span>(<span class="kw"><span class="hljs-keyword">new</span></span> <span class="at">Circle</span>(x<span class="op">,</span>y<span class="op">,</span>dx<span class="op">,</span>dy<span class="op">,</span>radius))<span class="op">;</span>
+<span class="op">}</span>
+<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">clearRect</span>(<span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span>innerWidth<span class="op">,</span>innerHeight)<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//循环刷新不同的圆</span></span>
+    <span class="cf"><span class="hljs-keyword">for</span></span> (<span class="kw"><span class="hljs-keyword">var</span></span> i <span class="op">=</span> <span class="dv"><span class="hljs-number">0</span></span><span class="op">;</span> i <span class="op">&lt;</span> <span class="va">cirleArray</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+        cirleArray[i].<span class="at">update</span>()<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">};</span>
+<span class="at">animate</span>()<span class="op">;</span></code></pre>
+                    </div>
+                    <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/5r8px15t" allowfullscreen="allowfullscreen"
+                      frameborder="0">
+                    </iframe>
                     <p>这篇就介绍到这里，大家有兴趣可以试试，下一篇我们讲怎么用canvas进行交互。</p>
                   </div>
                   <div id="MySignature"></div>
@@ -543,7 +914,8 @@
                 <a name="3803098" id="comment_anchor_3803098"></a>
                 <span class="comment_date">2017-10-05 11:00</span>
                 <a id="a_comment_author_3803098" href="http://www.cnblogs.com/JimmyZheng/" target="_blank">逆时针の风</a>
-                <a href="http://msg.cnblogs.com/send/%E9%80%86%E6%97%B6%E9%92%88%E3%81%AE%E9%A3%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+                <a href="http://msg.cnblogs.com/send/%E9%80%86%E6%97%B6%E9%92%88%E3%81%AE%E9%A3%8E" title="发送站内短消息"
+                  class="sendMsg2This">&nbsp;</a>
               </div>
               <div class="feedbackCon">
                 <div id="comment_body_3803098" class="blog_comment_body">不错的效果，不过，球与之间的碰撞 有点的难度，得用到向量 ^^</div>
@@ -617,7 +989,8 @@
                 <a name="3803117" id="comment_anchor_3803117"></a>
                 <span class="comment_date">2017-10-05 11:44</span>
                 <a id="a_comment_author_3803117" href="http://home.cnblogs.com/u/481982/" target="_blank">我是_用户名</a>
-                <a href="http://msg.cnblogs.com/send/%E6%88%91%E6%98%AF_%E7%94%A8%E6%88%B7%E5%90%8D" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+                <a href="http://msg.cnblogs.com/send/%E6%88%91%E6%98%AF_%E7%94%A8%E6%88%B7%E5%90%8D" title="发送站内短消息"
+                  class="sendMsg2This">&nbsp;</a>
               </div>
               <div class="feedbackCon">
                 <div id="comment_body_3803117" class="blog_comment_body">我的5820K一开你这个页面，占用率就要高4%左右</div>
@@ -859,7 +1232,8 @@
                 <span id="comment-maxDate" style="display:none;">2017/10/9 15:08:58</span>
                 <span class="comment_date">2017-10-09 15:08</span>
                 <a id="a_comment_author_3805355" href="http://www.cnblogs.com/joeymary/" target="_blank">大兄弟竹子</a>
-                <a href="http://msg.cnblogs.com/send/%E5%A4%A7%E5%85%84%E5%BC%9F%E7%AB%B9%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+                <a href="http://msg.cnblogs.com/send/%E5%A4%A7%E5%85%84%E5%BC%9F%E7%AB%B9%E5%AD%90" title="发送站内短消息"
+                  class="sendMsg2This">&nbsp;</a>
               </div>
               <div class="feedbackCon">
                 <div id="comment_body_3805355" class="blog_comment_body">
@@ -881,7 +1255,8 @@
             <div id="divCommentShow"></div>
             <div id="comment_nav">
               <span id="span_refresh_tips"></span>
-              <a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a>
+              <a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server"
+                clientidmode="Static">刷新评论</a>
               <a href="#" onclick="return RefreshPage();">刷新页面</a>
               <a href="#top">返回顶部</a>
             </div>
@@ -891,43 +1266,6 @@
                 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
                 <a href="http://www.cnblogs.com">访问</a>网站首页。</div>
             </div>
-            <div id="comment_form_container"><script type="text/javascript" src="//mention.cnblogs.com/bundles/mention.js?id=20160615"></script>
-<div id="commentform_title">发表评论</div>
-<span id="tip_comment" style="color:Red"></span>
-<p>
-昵称：<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="dkplus">
-</p>
-<div class="commentbox_main">
-<div class="commentbox_title">
-<div class="commentbox_title_left">评论内容：</div>
-<div class="commentbox_title_right">
-<img id="ubb_quote" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/Text Editor - Quote.png" alt="引用" title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
-<img id="ubb_bold" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/bold.png" alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
-<img id="ubb_url" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/url.png" alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
-<img id="ubb_indent" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/indentation-left.png" alt="缩进" title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
-<img id="ubb_code" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/code.png" alt="代码" title="添加代码" onclick="insertUbbCode()">
-<img id="ubb_img" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/img-03.png" alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
-</div>
-</div>
-<div class="clear"></div>
-<textarea id="tbCommentBody" class="comment_textarea"></textarea>
-</div>
-<p id="commentbox_opt">
-<input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
-<span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
-<a href="javascript:void(0);" onclick="return logout();">退出</a>
-</p>
-<div id="tip_comment2" style="color:Red"></div>
-<p>
-[Ctrl+Enter快捷键提交]
-</p>
-<div style="display:none">
-<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
-<span id="span_parent_id"></span>
-<span id="span_comment_replyto"></span>
-<span id="span_comment_posted"></span>
-</div>
-</div>
             <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
             <div id="ad_t2">
               <a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a>
@@ -1300,6 +1638,6 @@
   <!--end: home 自定义的最大容器 -->
 
 
-<script type="text/javascript" src="app.js"></script></body>
+</body>
 
 </html>

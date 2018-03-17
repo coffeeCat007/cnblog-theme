@@ -247,6 +247,334 @@ img {
 #main #mainContent .topicListFooter .pager > * {
   margin: 0 10px;
 }
+#main #mainContent #post_detail .post {
+  padding: 30px;
+  background-color: #F5F6EB;
+}
+#main #mainContent #post_detail .post .postTitle {
+  text-align: center;
+  font-size: 28.8px;
+}
+#main #mainContent #post_detail .post .postTitle > a {
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#main #mainContent #post_detail .post .postTitle > a:link {
+  color: #C9CABB;
+}
+#main #mainContent #post_detail .post .postTitle > a:visited {
+  color: #65655e;
+}
+#main #mainContent #post_detail .post .postTitle > a:active {
+  color: #fff;
+}
+#main #mainContent #post_detail .post .postTitle > a:hover {
+  color: #a1a296;
+}
+#main #mainContent #post_detail .post h1 {
+  font-size: 28.8px;
+  color: #34352C;
+  margin: 10px 0;
+}
+#main #mainContent #post_detail .post h2 {
+  font-size: 24px;
+  color: #34352C;
+  margin: 10px 0;
+}
+#main #mainContent #post_detail .post h3 {
+  font-size: 22.4px;
+  color: #34352C;
+  margin: 10px 0;
+}
+#main #mainContent #post_detail .post h4 {
+  font-size: 20.8px;
+  color: #34352C;
+  margin: 10px 0;
+}
+#main #mainContent #post_detail .post h5 {
+  font-size: 19.2px;
+  color: #34352C;
+  margin: 10px 0;
+}
+#main #mainContent #post_detail .post p {
+  font-size: 16px;
+  color: #34352C;
+  line-height: 24px;
+  margin: 10px 0;
+}
+#main #mainContent #post_detail .post blockquote {
+  border-left: 7px solid #34352C;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+#main #mainContent #post_detail .post blockquote p {
+  font-size: 14.4px;
+  color: #8d8d83;
+}
+#main #mainContent #post_detail .post code {
+  border: 2px solid #F5F6EB;
+  background-color: #34352C;
+  box-shadow: 0 0 4px #34352C;
+  border-radius: 5px;
+  color: #EFF0DC;
+  padding: 3px 5px;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  transition: 0.3s;
+}
+#main #mainContent #post_detail .post code:hover {
+  box-shadow: 0 0 8px #34352C;
+}
+#main #mainContent #post_detail .post .sourceCode {
+  font-family: consolas;
+}
+#main #mainContent #post_detail .post .sourceCode span {
+  line-height: 19.2px;
+  font-size: 14.4px;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em 2em;
+  background: #272822;
+  -webkit-text-size-adjust: none;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs-tag,
+#main #mainContent #post_detail .post .sourceCode .hljs-tag .hljs-title,
+#main #mainContent #post_detail .post .sourceCode .hljs-keyword,
+#main #mainContent #post_detail .post .sourceCode .hljs-literal,
+#main #mainContent #post_detail .post .sourceCode .hljs-strong,
+#main #mainContent #post_detail .post .sourceCode .hljs-change,
+#main #mainContent #post_detail .post .sourceCode .hljs-winutils,
+#main #mainContent #post_detail .post .sourceCode .hljs-flow,
+#main #mainContent #post_detail .post .sourceCode .nginx .hljs-title,
+#main #mainContent #post_detail .post .sourceCode .tex .hljs-special {
+  color: #f92672;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs {
+  color: #ddd;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs .hljs-constant,
+#main #mainContent #post_detail .post .sourceCode .asciidoc .hljs-code {
+  color: #66d9ef;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs-code,
+#main #mainContent #post_detail .post .sourceCode .hljs-class .hljs-title,
+#main #mainContent #post_detail .post .sourceCode .hljs-header {
+  color: white;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs-link_label,
+#main #mainContent #post_detail .post .sourceCode .hljs-attribute,
+#main #mainContent #post_detail .post .sourceCode .hljs-symbol,
+#main #mainContent #post_detail .post .sourceCode .hljs-symbol .hljs-string,
+#main #mainContent #post_detail .post .sourceCode .hljs-value,
+#main #mainContent #post_detail .post .sourceCode .hljs-regexp {
+  color: #bf79db;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs-link_url,
+#main #mainContent #post_detail .post .sourceCode .hljs-tag .hljs-value,
+#main #mainContent #post_detail .post .sourceCode .hljs-string,
+#main #mainContent #post_detail .post .sourceCode .hljs-bullet,
+#main #mainContent #post_detail .post .sourceCode .hljs-subst,
+#main #mainContent #post_detail .post .sourceCode .hljs-title,
+#main #mainContent #post_detail .post .sourceCode .hljs-emphasis,
+#main #mainContent #post_detail .post .sourceCode .hljs-type,
+#main #mainContent #post_detail .post .sourceCode .hljs-preprocessor,
+#main #mainContent #post_detail .post .sourceCode .hljs-pragma,
+#main #mainContent #post_detail .post .sourceCode .ruby .hljs-class .hljs-parent,
+#main #mainContent #post_detail .post .sourceCode .hljs-built_in,
+#main #mainContent #post_detail .post .sourceCode .django .hljs-template_tag,
+#main #mainContent #post_detail .post .sourceCode .django .hljs-variable,
+#main #mainContent #post_detail .post .sourceCode .smalltalk .hljs-class,
+#main #mainContent #post_detail .post .sourceCode .hljs-javadoc,
+#main #mainContent #post_detail .post .sourceCode .django .hljs-filter .hljs-argument,
+#main #mainContent #post_detail .post .sourceCode .smalltalk .hljs-localvars,
+#main #mainContent #post_detail .post .sourceCode .smalltalk .hljs-array,
+#main #mainContent #post_detail .post .sourceCode .hljs-attr_selector,
+#main #mainContent #post_detail .post .sourceCode .hljs-pseudo,
+#main #mainContent #post_detail .post .sourceCode .hljs-addition,
+#main #mainContent #post_detail .post .sourceCode .hljs-stream,
+#main #mainContent #post_detail .post .sourceCode .hljs-envvar,
+#main #mainContent #post_detail .post .sourceCode .apache .hljs-tag,
+#main #mainContent #post_detail .post .sourceCode .apache .hljs-cbracket,
+#main #mainContent #post_detail .post .sourceCode .tex .hljs-command,
+#main #mainContent #post_detail .post .sourceCode .hljs-prompt {
+  color: #a6e22e;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs-comment,
+#main #mainContent #post_detail .post .sourceCode .hljs-annotation,
+#main #mainContent #post_detail .post .sourceCode .smartquote,
+#main #mainContent #post_detail .post .sourceCode .hljs-blockquote,
+#main #mainContent #post_detail .post .sourceCode .hljs-horizontal_rule,
+#main #mainContent #post_detail .post .sourceCode .hljs-decorator,
+#main #mainContent #post_detail .post .sourceCode .hljs-template_comment,
+#main #mainContent #post_detail .post .sourceCode .hljs-pi,
+#main #mainContent #post_detail .post .sourceCode .hljs-doctype,
+#main #mainContent #post_detail .post .sourceCode .hljs-deletion,
+#main #mainContent #post_detail .post .sourceCode .hljs-shebang,
+#main #mainContent #post_detail .post .sourceCode .apache .hljs-sqbracket,
+#main #mainContent #post_detail .post .sourceCode .tex .hljs-formula {
+  color: #75715e;
+}
+#main #mainContent #post_detail .post .sourceCode .hljs-keyword,
+#main #mainContent #post_detail .post .sourceCode .hljs-literal,
+#main #mainContent #post_detail .post .sourceCode .css .hljs-id,
+#main #mainContent #post_detail .post .sourceCode .hljs-phpdoc,
+#main #mainContent #post_detail .post .sourceCode .hljs-dartdoc,
+#main #mainContent #post_detail .post .sourceCode .hljs-title,
+#main #mainContent #post_detail .post .sourceCode .hljs-header,
+#main #mainContent #post_detail .post .sourceCode .hljs-type,
+#main #mainContent #post_detail .post .sourceCode .vbscript .hljs-built_in,
+#main #mainContent #post_detail .post .sourceCode .rsl .hljs-built_in,
+#main #mainContent #post_detail .post .sourceCode .smalltalk .hljs-class,
+#main #mainContent #post_detail .post .sourceCode .diff .hljs-header,
+#main #mainContent #post_detail .post .sourceCode .hljs-chunk,
+#main #mainContent #post_detail .post .sourceCode .hljs-winutils,
+#main #mainContent #post_detail .post .sourceCode .bash .hljs-variable,
+#main #mainContent #post_detail .post .sourceCode .apache .hljs-tag,
+#main #mainContent #post_detail .post .sourceCode .tex .hljs-special,
+#main #mainContent #post_detail .post .sourceCode .hljs-request,
+#main #mainContent #post_detail .post .sourceCode .hljs-status {
+  font-weight: bold;
+}
+#main #mainContent #post_detail .post .sourceCode .coffeescript .javascript,
+#main #mainContent #post_detail .post .sourceCode .javascript .xml,
+#main #mainContent #post_detail .post .sourceCode .tex .hljs-formula,
+#main #mainContent #post_detail .post .sourceCode .xml .javascript,
+#main #mainContent #post_detail .post .sourceCode .xml .vbscript,
+#main #mainContent #post_detail .post .sourceCode .xml .css,
+#main #mainContent #post_detail .post .sourceCode .xml .hljs-cdata {
+  opacity: 0.5;
+}
+#main #mainContent #post_detail #blog_post_info_block {
+  display: none;
+}
+#main #mainContent #post_detail .postDesc {
+  text-align: right;
+  font-size: 12.8px;
+}
+#main #mainContent #post_detail .postDesc > a {
+  display: inline-block;
+}
+#main #mainContent #blog-comments-placeholder {
+  background-color: #EFF0DC;
+  padding: 20px;
+  color: #34352C;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+}
+#main #mainContent #blog-comments-placeholder:hover {
+  background-color: #797970;
+}
+#main #mainContent #blog-comments-placeholder a {
+  display: inline-block;
+}
+#main #mainContent #blog-comments-placeholder a:link {
+  color: #C9CABB;
+}
+#main #mainContent #blog-comments-placeholder a:visited {
+  color: #65655e;
+}
+#main #mainContent #blog-comments-placeholder a:active {
+  color: #fff;
+}
+#main #mainContent #blog-comments-placeholder a:hover {
+  color: #fff;
+}
+#main #mainContent #blog-comments-placeholder .feedback_area_title {
+  font-size: 19.2px;
+}
+#main #mainContent #blog-comments-placeholder .feedbackItem {
+  padding: 5px;
+}
+#main #mainContent #blog-comments-placeholder .feedbackItem .feedbackCon {
+  font-size: 12.8px;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+#main #mainContent #blog-comments-placeholder .feedbackItem .feedbackListSubtitle {
+  font-size: 14.4px;
+}
+#main #mainContent #blog-comments-placeholder .feedbackItem .comment_vote {
+  text-align: right;
+  font-size: 12.8px;
+}
+#main #mainContent #blog-comments-placeholder .feedbackItem .louzhu {
+  border: 2px solid #F5F6EB;
+  background-color: #34352C;
+  box-shadow: 0 0 4px #34352C;
+  border-radius: 5px;
+  color: #EFF0DC;
+  padding: 3px 5px;
+}
+#main #mainContent #comment_form {
+  background-color: #C9CABB;
+  padding: 20px;
+}
+#main #mainContent #comment_form #comment_nav {
+  display: none;
+}
+#main #mainContent #comment_form #ad_t2 {
+  display: none;
+}
+#main #mainContent #comment_form .c_ad_block {
+  display: none;
+}
+#main #mainContent #comment_form #comment_form_container {
+  font-size: 12.8px;
+  color: #34352C;
+}
+#main #mainContent #comment_form #comment_form_container div {
+  margin: 10px 0;
+}
+#main #mainContent #comment_form #comment_form_container p {
+  margin: 10px 0;
+}
+#main #mainContent #comment_form #comment_form_container .commentbox_title_right img {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+#main #mainContent #comment_form #comment_form_container #commentform_title {
+  font-size: 17.6px;
+}
+#main #mainContent #comment_form #comment_form_container #tbCommentBody {
+  width: 400;
+  height: 200px;
+  border: 3px solid #34352C;
+  box-shadow: 0 0 5px #34352C;
+}
+#main #mainContent #comment_form #comment_form_container #commentbox_opt a {
+  display: none;
+}
+#main #mainContent #comment_form #comment_form_container #commentbox_opt p {
+  display: none;
+}
+#main #mainContent #comment_form #comment_form_container #btn_comment_submit {
+  padding: 5px;
+  border: 3px solid #fff;
+  background-color: #34352C;
+  color: #F5F6EB;
+  border-radius: 5px;
+  box-shadow: 0 0 5px black;
+}
+#main #mainContent #comment_form #comment_form_container .login_tips {
+  padding: 10px;
+  font-size: 12.8px;
+  border: 2px solid #fff;
+  background-color: #dd8c13;
+  box-shadow: 0 0 4px black;
+  border-radius: 5px;
+  color: #fff;
+}
+#main #mainContent #comment_form #comment_form_container a {
+  display: inline-block;
+}
 #main #sideBar {
   position: absolute;
   width: 300px;
@@ -273,9 +601,10 @@ img {
   #main #sideBar {
     position: static;
     width: 100%;
+    height: auto;
     transform: translate(0);
     border-left: none;
-    overflow: hidden;
+    overflow: unset;
   }
 }
 #main #sideBar #sideBarMain > div {
@@ -329,6 +658,9 @@ img {
   font-size: 16px;
   height: 24px;
   line-height: 24px;
+}
+#main #sideBar #sideBarMain #blogCalendar tr > * {
+  color: #F5F6EB;
 }
 #main #sideBar #sideBarMain #blogCalendar tr td {
   -webkit-transition: 0.3s;

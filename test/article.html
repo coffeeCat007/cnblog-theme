@@ -1,0 +1,1318 @@
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>用canvas给自己的博客园加背景（二） - dkplus - 博客园</title>
+  <link href="../dist/app.css" rel="stylesheet">
+</head>
+
+<body>
+  <a name="top"></a>
+  <!--PageBeginHtml Block Begin-->
+  <!--PageBeginHtml Block End-->
+
+  <!--done-->
+  <div id="home">
+    <div id="header">
+      <div id="blogTitle">
+        <a id="lnkBlogLogo" href="http://www.cnblogs.com/dkplus/">
+          <img id="blogLogo" src="/Skins/custom/images/logo.gif" alt="返回主页">
+        </a>
+
+        <!--done-->
+        <h1>
+          <a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/dkplus/">dkplus</a>
+        </h1>
+        <h2></h2>
+
+
+
+
+      </div>
+      <!--end: blogTitle 博客的标题和副标题 -->
+      <div id="navigator">
+
+        <ul id="navList">
+          <li></li>
+          <li>
+            <a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/dkplus/">首页</a>
+          </li>
+          <li>
+            <a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a>
+          </li>
+          <li>
+            <a id="blog_nav_contact" class="menu" rel="nofollow" href="https://msg.cnblogs.com/send/dkplus">联系</a>
+          </li>
+          <li>
+            <!---->
+          </li>
+          <li>
+            <a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a>
+          </li>
+        </ul>
+        <div class="blogStats">
+
+          <div id="blog_stats">
+            <span id="stats_post_count">随笔 - 23&nbsp; </span>
+            <span id="stats_article_count">文章 - 1&nbsp; </span>
+            <span id="stats-comment_count">评论 - 69</span>
+          </div>
+
+        </div>
+        <!--end: blogStats -->
+      </div>
+      <!--end: navigator 博客导航栏 -->
+    </div>
+    <!--end: header 头部 -->
+
+    <div id="main">
+      <div id="mainContent">
+        <div class="forFlow">
+
+          <div id="post_detail">
+            <!--done-->
+            <div id="topics">
+              <div class="post">
+                <h1 class="postTitle">
+                  <a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/dkplus/p/7625511.html">用canvas给自己的博客园加背景（二）</a>
+                </h1>
+                <div class="clear"></div>
+                <div class="postBody">
+                  <div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown">
+                    <h1 id="canvas入门二">canvas入门（二）</h1>
+                    <blockquote>
+                      <p>前一篇大概介绍了canvas绘图的一些基础API，本文来介绍动画的部分，canvas最关键的函数是
+                        <code>requestAnimationFrame(callback)</code>。</p>
+                      <p>
+                        <strong>注：</strong>本文面向canvas入门人员，写的如有纰漏请指出，不喜勿喷。</p>
+                    </blockquote>
+                    <h2 id="requestanimationframecallback">requestAnimationFrame(callback)</h2>
+                    <p>这是一个用于制作逐帧动画的函数，在它出现之前，我们的动画基本用setTimeout或者setInterval制作。</p>
+                    <p>我们可以尝试声明一个animate函数：</p>
+                    <p>此时打开控制台看一下效果。</p>
+                    <p>可以看到animate()里面的操作在无限执行，而我们用canvas绘制动画也可以选择这样的思路，无限刷新画布，无限绘制画布。</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs">    <span class="va">ctx</span>.<span class="at">arc</span>(<span class="dv"><span class="hljs-number">100</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">100</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">40</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">PI</span><span class="op">*</span><span class="dv"><span class="hljs-number">2</span></span><span class="op">,</span><span class="kw"><span class="hljs-literal">false</span></span>)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">stroke</span>()<span class="op">;</span>
+(<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//在同一个坐标无限循环画一个圆</span></span>
+    <span class="co"><span class="hljs-comment">//重新定义开始坐标，试着注释掉这一行看看效果有何不同</span></span>
+    <span class="va">ctx</span>.<span class="at">beginPath</span>()<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">arc</span>(<span class="dv"><span class="hljs-number">100</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">100</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">40</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">PI</span><span class="op">*</span><span class="dv"><span class="hljs-number">2</span></span><span class="op">,</span><span class="kw"><span class="hljs-literal">false</span></span>)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">stroke</span>()<span class="op">;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre>
+                    </div>
+                    <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/cb0uefhr" allowfullscreen="allowfullscreen"
+                      frameborder="0">
+                    </iframe>
+                    <h2 id="刷新画布">刷新画布</h2>
+                    <p>可以看到，这个图确实是动起来了，但是前面的图像没有被清除，而是简单的图像覆盖。所以我们要在每次绘图之前先清楚画布，使用clearRect()这个函数（可以说是canvas的橡皮擦）。</p>
+                    <p>和fillRect()，strokeRect()参数一样，clearRect(x坐标,y坐标,宽度,高度)：</p>
+                    <div class="sourceCode">
+                      <pre class="sourceCode javascript"><code class="sourceCode javascript hljs"><span class="kw"><span class="hljs-keyword">var</span></span> x <span class="op">=</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span>
+<span class="kw"><span class="hljs-keyword">var</span></span> y <span class="op">=</span> <span class="dv"><span class="hljs-number">100</span></span><span class="op">;</span>
+(<span class="kw"><span class="hljs-function"><span class="hljs-keyword">function</span></span></span><span class="hljs-function"> </span><span class="at"><span class="hljs-function"><span class="hljs-title">animate</span></span></span><span class="hljs-function">(<span class="hljs-params"></span>) </span><span class="op">{</span>
+    <span class="at">requestAnimationFrame</span>(animate)<span class="op">;</span>
+    <span class="co"><span class="hljs-comment">//这是我们加入的橡皮擦函数</span></span>
+    <span class="va">ctx</span>.<span class="at">clearRect</span>(<span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span>innerWidth<span class="op">,</span>innerHeight)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">beginPath</span>()<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">arc</span>(x<span class="op">,</span>y<span class="op">,</span><span class="dv"><span class="hljs-number">40</span></span><span class="op">,</span><span class="dv"><span class="hljs-number">0</span></span><span class="op">,</span><span class="va"><span class="hljs-built_in">Math</span></span>.<span class="at">PI</span><span class="op">*</span><span class="dv"><span class="hljs-number">2</span></span><span class="op">,</span><span class="kw"><span class="hljs-literal">false</span></span>)<span class="op">;</span>
+    <span class="va">ctx</span>.<span class="at">stroke</span>()<span class="op">;</span>
+    x <span class="op">+=</span> <span class="dv"><span class="hljs-number">1</span></span><span class="op">;</span>
+    y <span class="op">+=</span> <span class="dv"><span class="hljs-number">1</span></span><span class="op">;</span>
+<span class="op">}</span>)()<span class="op">;</span></code></pre>
+                    </div>
+                    <iframe style="width: 100%; height: 300px" src="http://sandbox.runjs.cn/show/cy7ng5eu" allowfullscreen="allowfullscreen"
+                      frameborder="0">
+                    </iframe>
+                    <blockquote>
+                      <p>本人对面向对象这块不太熟，可能说的不太好请见谅</p>
+                    </blockquote>
+                    <p>这篇就介绍到这里，大家有兴趣可以试试，下一篇我们讲怎么用canvas进行交互。</p>
+                  </div>
+                  <div id="MySignature"></div>
+                  <div class="clear"></div>
+                  <div id="blog_post_info_block">
+                    <div id="BlogPostCategory">分类:
+                      <a href="http://www.cnblogs.com/dkplus/category/1071687.html" target="_blank">前端</a>
+                    </div>
+                    <div id="EntryTag">标签:
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E5%89%8D%E7%AB%AF/">前端</a>,
+                      <a href="http://www.cnblogs.com/dkplus/tag/canvas/">canvas</a>
+                    </div>
+                    <div id="blog_post_info">
+                      <div id="green_channel">
+                        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(7625511,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+                        <a id="green_channel_follow" onclick="follow('85f7974f-90ca-e611-845c-ac853d9f53ac');" href="javascript:void(0);">关注我</a>
+                        <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+                        <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()">
+                          <img src="//common.cnblogs.com/images/icon_weibo_24.png" alt="">
+                        </a>
+                        <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()">
+                          <img src="//common.cnblogs.com/images/wechat.png" alt="">
+                        </a>
+                      </div>
+                      <div id="author_profile">
+                        <div id="author_profile_info" class="author_profile_info">
+                          <a href="http://home.cnblogs.com/u/dkplus/" target="_blank">
+                            <img src="//pic.cnblogs.com/face/1086186/20161225193628.png" class="author_avatar" alt="">
+                          </a>
+                          <div id="author_profile_detail" class="author_profile_info">
+                            <a href="http://home.cnblogs.com/u/dkplus/">dkplus</a>
+                            <br>
+                            <a href="http://home.cnblogs.com/u/dkplus/followees">关注 - 2</a>
+                            <br>
+                            <a href="http://home.cnblogs.com/u/dkplus/followers">粉丝 - 29</a>
+                          </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div id="author_profile_honor"></div>
+                        <div id="author_profile_follow">
+                          <a href="javascript:void(0);" onclick="follow('85f7974f-90ca-e611-845c-ac853d9f53ac');return false;">+加关注</a>
+                        </div>
+                      </div>
+                      <div id="div_digg">
+                        <div class="diggit" onclick="votePost(7625511,'Digg')">
+                          <span class="diggnum" id="digg_count">9</span>
+                        </div>
+                        <div class="buryit" onclick="votePost(7625511,'Bury')">
+                          <span class="burynum" id="bury_count">0</span>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="diggword" id="digg_tips">
+                        </div>
+                      </div>
+                      <script type="text/javascript">
+                        currentDiggType = 0;
+                      </script>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="post_next_prev">
+                      <a href="http://www.cnblogs.com/dkplus/p/7623642.html" class="p_n_p_prefix">« </a> 上一篇：
+                      <a href="http://www.cnblogs.com/dkplus/p/7623642.html" title="发布于2017-10-03 13:34">用canvas给自己的博客园加背景（一）</a>
+                      <br>
+                      <a href="http://www.cnblogs.com/dkplus/p/7887482.html" class="p_n_p_prefix">» </a> 下一篇：
+                      <a href="http://www.cnblogs.com/dkplus/p/7887482.html" title="发布于2017-11-23 22:55">canvas动画3：交互</a>
+                      <br>
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="postDesc">posted @
+                  <span id="post-date">2017-10-04 13:11</span>
+                  <a href="http://www.cnblogs.com/dkplus/">dkplus</a> 阅读(
+                  <span id="post_view_count">1032</span>) 评论(
+                  <span id="post_comment_count">27</span>)
+                  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=7625511" rel="nofollow">编辑</a>
+                  <a href="#" onclick="AddToWz(7625511);return false;">收藏</a>
+                </div>
+              </div>
+              <script src="//common.cnblogs.com/highlight/9.1.0/highlight.min.js?id=20160127"></script>
+              <script>markdown_highlight();</script>
+              <script type="text/javascript">var allowComments = true, cb_blogId = 324750, cb_entryId = 7625511, cb_blogApp = currentBlogApp, cb_blogUserGuid = '85f7974f-90ca-e611-845c-ac853d9f53ac', cb_entryCreatedDate = '2017/10/4 13:11:00'; loadViewCount(cb_entryId); var cb_postType = 1;</script>
+
+            </div>
+            <!--end: topics 文章、评论容器-->
+          </div>
+          <a name="!comments"></a>
+          <div id="blog-comments-placeholder">
+            <div id="comments_pager_top"></div>
+            <br>
+            <div class="feedback_area_title">评论列表</div>
+            <div class="feedbackNoItems"></div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802900" class="layer">#1楼</a>
+                <a name="3802900" id="comment_anchor_3802900"></a>
+                <span class="comment_date">2017-10-04 17:43</span>
+                <a id="a_comment_author_3802900" href="http://www.cnblogs.com/xspaceworld/" target="_blank">X-Space</a>
+                <a href="http://msg.cnblogs.com/send/X-Space" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802900" class="blog_comment_body">美感在哪？</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802900,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802900,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802900_avatar" style="display:none;">http://pic.cnblogs.com/face/u141972.jpg?id=26204832</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802904" class="layer">#2楼</a>
+                <a name="3802904" id="comment_anchor_3802904"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-04 18:02</span>
+                <a id="a_comment_author_3802904" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802904" class="blog_comment_body">
+                  <a href="#3802900" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3802900);">@</a>
+                  X-Space
+                  <br>才做到一半而已啊，做个demo</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802904,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802904,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802904_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802913" class="layer">#3楼</a>
+                <a name="3802913" id="comment_anchor_3802913"></a>
+                <span class="comment_date">2017-10-04 19:21</span>
+                <a id="a_comment_author_3802913" href="http://www.cnblogs.com/yjlblog/" target="_blank">YJLAugus</a>
+                <a href="http://msg.cnblogs.com/send/YJLAugus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802913" class="blog_comment_body">我擦，博主的弄的比我的还好看qaq</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802913,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802913,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802913_avatar" style="display:none;">http://pic.cnblogs.com/face/1176586/20171130220831.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802915" class="layer">#4楼</a>
+                <a name="3802915" id="comment_anchor_3802915"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-04 19:26</span>
+                <a id="a_comment_author_3802915" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802915" class="blog_comment_body">
+                  <a href="#3802913" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3802913);">@</a>
+                  yjl博客
+                  <br>同主题模板哈哈哈</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802915,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802915,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802915_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802926" class="layer">#5楼</a>
+                <a name="3802926" id="comment_anchor_3802926"></a>
+                <span class="comment_date">2017-10-04 19:58</span>
+                <a id="a_comment_author_3802926" href="http://www.cnblogs.com/hmimi/" target="_blank">人生如梦</a>
+                <a href="http://msg.cnblogs.com/send/%E4%BA%BA%E7%94%9F%E5%A6%82%E6%A2%A6" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802926" class="blog_comment_body">我觉得很不错，赞一个！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802926,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802926,'Bury',this)">反对(0)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802967" class="layer">#6楼</a>
+                <a name="3802967" id="comment_anchor_3802967"></a>
+                <span class="comment_date">2017-10-04 21:11</span>
+                <a id="a_comment_author_3802967" href="http://www.cnblogs.com/cuiwenyuan/" target="_blank">troy.cui</a>
+                <a href="http://msg.cnblogs.com/send/troy.cui" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802967" class="blog_comment_body">赞一个，你自己的背景图就挺赞！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802967,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802967,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802967_avatar" style="display:none;">http://pic.cnblogs.com/face/u125871.jpg</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802982" class="layer">#7楼</a>
+                <a name="3802982" id="comment_anchor_3802982"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-04 21:44</span>
+                <a id="a_comment_author_3802982" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802982" class="blog_comment_body">
+                  <a href="#3802967" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3802967);">@</a>
+                  troy.cui
+                  <br>多谢支持！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802982,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802982,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802982_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3802983" class="layer">#8楼</a>
+                <a name="3802983" id="comment_anchor_3802983"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-04 21:45</span>
+                <a id="a_comment_author_3802983" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3802983" class="blog_comment_body">
+                  <a href="#3802926" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3802926);">@</a>
+                  人生如梦
+                  <br>多谢支持！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3802983,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3802983,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3802983_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803048" class="layer">#9楼</a>
+                <a name="3803048" id="comment_anchor_3803048"></a>
+                <span class="comment_date">2017-10-05 08:18</span>
+                <a id="a_comment_author_3803048" href="http://home.cnblogs.com/u/608093/" target="_blank">叨叨叨</a>
+                <a href="http://msg.cnblogs.com/send/%E5%8F%A8%E5%8F%A8%E5%8F%A8" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803048" class="blog_comment_body">CPU占用太高，到60%了。Chrome GPU进程就25
+                  <br>I5 2410M / 8G / Win10 x64 / Chrome 61
+                  <br>
+                </div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803048,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803048,'Bury',this)">反对(0)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803063" class="layer">#10楼</a>
+                <a name="3803063" id="comment_anchor_3803063"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-05 09:56</span>
+                <a id="a_comment_author_3803063" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803063" class="blog_comment_body">
+                  <a href="#3803048" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803048);">@</a>
+                  叨叨叨
+                  <br>博客园加了几个css3动画确实变卡了，对优化有什么指教吗？</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803063,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803063,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803063_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803076" class="layer">#11楼</a>
+                <a name="3803076" id="comment_anchor_3803076"></a>
+                <span class="comment_date">2017-10-05 10:14</span>
+                <a id="a_comment_author_3803076" href="http://www.cnblogs.com/goodfulcom/" target="_blank">码有钱</a>
+                <a href="http://msg.cnblogs.com/send/%E7%A0%81%E6%9C%89%E9%92%B1" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803076" class="blog_comment_body">牛啊</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803076,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803076,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803076_avatar" style="display:none;">http://pic.cnblogs.com/face/u162282.jpg?id=19203843</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803079" class="layer">#12楼</a>
+                <a name="3803079" id="comment_anchor_3803079"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-05 10:21</span>
+                <a id="a_comment_author_3803079" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803079" class="blog_comment_body">
+                  <a href="#3803076" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803076);">@</a>
+                  码有钱
+                  <br>多谢支持！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803079,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803079,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803079_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803093" class="layer">#13楼</a>
+                <a name="3803093" id="comment_anchor_3803093"></a>
+                <span class="comment_date">2017-10-05 10:53</span>
+                <a id="a_comment_author_3803093" href="http://www.cnblogs.com/flaming/" target="_blank">Flaming丶淡蓝</a>
+                <a href="http://msg.cnblogs.com/send/Flaming%E4%B8%B6%E6%B7%A1%E8%93%9D" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803093" class="blog_comment_body">我的音响可以感知到cpu的运行，一旦有cpu使用的情况，我的音响就一直滋滋响，来到你这个页面 滋滋个不停。哈哈。</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803093,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803093,'Bury',this)">反对(0)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803098" class="layer">#14楼</a>
+                <a name="3803098" id="comment_anchor_3803098"></a>
+                <span class="comment_date">2017-10-05 11:00</span>
+                <a id="a_comment_author_3803098" href="http://www.cnblogs.com/JimmyZheng/" target="_blank">逆时针の风</a>
+                <a href="http://msg.cnblogs.com/send/%E9%80%86%E6%97%B6%E9%92%88%E3%81%AE%E9%A3%8E" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803098" class="blog_comment_body">不错的效果，不过，球与之间的碰撞 有点的难度，得用到向量 ^^</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803098,'Digg',this)">支持(1)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803098,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803098_avatar" style="display:none;">http://pic.cnblogs.com/face/u132191.jpg</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803101" class="layer">#15楼</a>
+                <a name="3803101" id="comment_anchor_3803101"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-05 11:07</span>
+                <a id="a_comment_author_3803101" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803101" class="blog_comment_body">
+                  <a href="#3803093" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803093);">@</a>
+                  Flaming丶淡蓝
+                  <br>哈哈，看来要学一下优化动画cpu占用率了</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803101,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803101,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803101_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803103" class="layer">#16楼</a>
+                <a name="3803103" id="comment_anchor_3803103"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-05 11:08</span>
+                <a id="a_comment_author_3803103" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803103" class="blog_comment_body">
+                  <a href="#3803098" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803098);">@</a>
+                  逆时针の风
+                  <br>才刚刚接触自由落体呢，碰撞也要继续学</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803103,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803103,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803103_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803117" class="layer">#17楼</a>
+                <a name="3803117" id="comment_anchor_3803117"></a>
+                <span class="comment_date">2017-10-05 11:44</span>
+                <a id="a_comment_author_3803117" href="http://home.cnblogs.com/u/481982/" target="_blank">我是_用户名</a>
+                <a href="http://msg.cnblogs.com/send/%E6%88%91%E6%98%AF_%E7%94%A8%E6%88%B7%E5%90%8D" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803117" class="blog_comment_body">我的5820K一开你这个页面，占用率就要高4%左右</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803117,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803117,'Bury',this)">反对(0)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803132" class="layer">#18楼</a>
+                <a name="3803132" id="comment_anchor_3803132"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-05 12:52</span>
+                <a id="a_comment_author_3803132" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803132" class="blog_comment_body">
+                  <a href="#3803117" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803117);">@</a>
+                  我是_用户名
+                  <br>真是可怕[捂脸]</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803132,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803132,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803132_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803167" class="layer">#19楼</a>
+                <a name="3803167" id="comment_anchor_3803167"></a>
+                <span class="comment_date">2017-10-05 14:32</span>
+                <a id="a_comment_author_3803167" href="http://www.cnblogs.com/xkxf/" target="_blank">xkfx</a>
+                <a href="http://msg.cnblogs.com/send/xkfx" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803167" class="blog_comment_body">很赞啊。。。</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803167,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803167,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803167_avatar" style="display:none;">http://pic.cnblogs.com/face/1042431/20170914164808.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803232" class="layer">#20楼</a>
+                <a name="3803232" id="comment_anchor_3803232"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-05 17:50</span>
+                <a id="a_comment_author_3803232" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803232" class="blog_comment_body">
+                  <a href="#3803167" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803167);">@</a>
+                  xkfx
+                  <br>多谢支持！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803232,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803232,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803232_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803244" class="layer">#21楼</a>
+                <a name="3803244" id="comment_anchor_3803244"></a>
+                <span class="comment_date">2017-10-05 18:40</span>
+                <a id="a_comment_author_3803244" href="http://www.cnblogs.com/yjlblog/" target="_blank">YJLAugus</a>
+                <a href="http://msg.cnblogs.com/send/YJLAugus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803244" class="blog_comment_body">
+                  <a href="#3802915" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3802915);">@</a>
+                  dkplus
+                  <br>恩呢，这个主题手机是自适应的，谢谢你给的建议，我试过了，用background的话，还是好多地方不协调，我只是想让代码区域显示不透明，还是谢谢你的。</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803244,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803244,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803244_avatar" style="display:none;">http://pic.cnblogs.com/face/1176586/20171130220831.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803300" class="layer">#22楼</a>
+                <a name="3803300" id="comment_anchor_3803300"></a>
+                <span class="comment_date">2017-10-05 21:50</span>
+                <a id="a_comment_author_3803300" href="http://www.cnblogs.com/dramstadt/" target="_blank">PoorLitt1eThin9</a>
+                <a href="http://msg.cnblogs.com/send/PoorLitt1eThin9" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803300" class="blog_comment_body">圆片感觉有点幼稚，不如线段的那种。</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803300,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803300,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803300_avatar" style="display:none;">http://pic.cnblogs.com/face/293751/20171212175417.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803574" class="layer">#23楼</a>
+                <a name="3803574" id="comment_anchor_3803574"></a>
+                <span class="comment_date">2017-10-06 19:25</span>
+                <a id="a_comment_author_3803574" href="http://home.cnblogs.com/u/1252285/" target="_blank">夜里码码</a>
+                <a href="http://msg.cnblogs.com/send/%E5%A4%9C%E9%87%8C%E7%A0%81%E7%A0%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803574" class="blog_comment_body">好厉害</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803574,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803574,'Bury',this)">反对(0)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3803583" class="layer">#24楼</a>
+                <a name="3803583" id="comment_anchor_3803583"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-06 19:58</span>
+                <a id="a_comment_author_3803583" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3803583" class="blog_comment_body">
+                  <a href="#3803574" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803574);">@</a>
+                  夜里码码
+                  <br>你是博客园的机器人水军？</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3803583,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3803583,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3803583_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3804674" class="layer">#25楼</a>
+                <a name="3804674" id="comment_anchor_3804674"></a>
+                <span class="comment_date">2017-10-08 21:13</span>
+                <a id="a_comment_author_3804674" href="http://home.cnblogs.com/u/1252285/" target="_blank">夜里码码</a>
+                <a href="http://msg.cnblogs.com/send/%E5%A4%9C%E9%87%8C%E7%A0%81%E7%A0%81" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3804674" class="blog_comment_body">
+                  <a href="#3803583" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3803583);">@</a>
+                  dkplus
+                  <br>晕死，太不给面子了啊，回复别人就是多谢支持，回复我，就认为我是机器人！！
+                  <br>机器人有这么智能啊</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3804674,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3804674,'Bury',this)">反对(0)</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3804809" class="layer">#26楼</a>
+                <a name="3804809" id="comment_anchor_3804809"></a>[
+                <span class="louzhu">楼主</span>]
+                <span class="comment_date">2017-10-09 07:51</span>
+                <a id="a_comment_author_3804809" href="http://www.cnblogs.com/dkplus/" target="_blank">dkplus</a>
+                <a href="http://msg.cnblogs.com/send/dkplus" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3804809" class="blog_comment_body">
+                  <a href="#3804674" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3804674);">@</a>
+                  夜里码码
+                  <br>[捂脸]不好意思啊，因为我看你刚刚开通博客园，然后几分钟内评论了那么多文章，还以为你是机器人，没事哈，多谢支持！</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3804809,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3804809,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3804809_avatar" style="display:none;">http://pic.cnblogs.com/face/1086186/20161225193628.png</span>
+              </div>
+            </div>
+
+            <div class="feedbackItem">
+              <div class="feedbackListSubtitle">
+                <div class="feedbackManage">
+                  &nbsp;&nbsp;
+                  <span class="comment_actions"></span>
+                </div>
+                <a href="#3805355" class="layer">#27楼</a>
+                <a name="3805355" id="comment_anchor_3805355"></a>
+                <span id="comment-maxId" style="display:none;">3805355</span>
+                <span id="comment-maxDate" style="display:none;">2017/10/9 15:08:58</span>
+                <span class="comment_date">2017-10-09 15:08</span>
+                <a id="a_comment_author_3805355" href="http://www.cnblogs.com/joeymary/" target="_blank">大兄弟竹子</a>
+                <a href="http://msg.cnblogs.com/send/%E5%A4%A7%E5%85%84%E5%BC%9F%E7%AB%B9%E5%AD%90" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+              </div>
+              <div class="feedbackCon">
+                <div id="comment_body_3805355" class="blog_comment_body">
+                  <a href="#3802913" title="查看所回复的评论" onclick="commentManager.renderComments(0,50,3802913);">@</a>
+                  yjl博客
+                  <br>主题也是够骚的，少年。</div>
+                <div class="comment_vote">
+                  <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3805355,'Digg',this)">支持(0)</a>
+                  <a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(3805355,'Bury',this)">反对(0)</a>
+                </div>
+                <span id="comment_3805355_avatar" style="display:none;">http://pic.cnblogs.com/face/776708/20170421093149.png</span>
+              </div>
+            </div>
+            <div id="comments_pager_bottom"></div>
+          </div>
+          <script type="text/javascript">var commentManager = new blogCommentManager(); commentManager.renderComments(0);</script>
+          <div id="comment_form" class="commentform">
+            <a name="commentform"></a>
+            <div id="divCommentShow"></div>
+            <div id="comment_nav">
+              <span id="span_refresh_tips"></span>
+              <a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a>
+              <a href="#" onclick="return RefreshPage();">刷新页面</a>
+              <a href="#top">返回顶部</a>
+            </div>
+            <div id="comment_form_container">
+              <div class="login_tips">注册用户登录后才能发表评论，请
+                <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或
+                <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
+                <a href="http://www.cnblogs.com">访问</a>网站首页。</div>
+            </div>
+            <div id="comment_form_container">
+              <script type="text/javascript" src="//mention.cnblogs.com/bundles/mention.js?id=20160615"></script>
+              <div id="commentform_title">发表评论</div>
+              <span id="tip_comment" style="color:Red"></span>
+              <p>
+                昵称：
+                <input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="dkplus">
+              </p>
+              <div class="commentbox_main">
+                <div class="commentbox_title">
+                  <div class="commentbox_title_left">评论内容：</div>
+                  <div class="commentbox_title_right">
+                    <img id="ubb_quote" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/Text Editor - Quote.png" alt="引用"
+                      title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
+                    <img id="ubb_bold" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/bold.png" alt="粗体" title="添加粗体"
+                      onclick="insertUBB('tbCommentBody','b')">
+                    <img id="ubb_url" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/url.png" alt="链接" title="添加链接"
+                      onclick="insertUbbUrl('tbCommentBody')">
+                    <img id="ubb_indent" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/indentation-left.png" alt="缩进"
+                      title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
+                    <img id="ubb_code" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/code.png" alt="代码" title="添加代码"
+                      onclick="insertUbbCode()">
+                    <img id="ubb_img" class="comment_icon" src="http://sandbox.runjs.cn/uploads/rs/200/ycdwfpfn/img-03.png" alt="图片" title="上传图片"
+                      onclick="OpenImageUploadWindow();">
+                  </div>
+                </div>
+                <div class="clear"></div>
+                <textarea id="tbCommentBody" class="comment_textarea"></textarea>
+              </div>
+              <p id="commentbox_opt">
+                <input id="btn_comment_submit" type="button" class="comment_btn" value="提交评论">
+                <span id="span_comment_canceledit" style="display:none">
+                  <a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a>
+                </span>
+                <a href="javascript:void(0);" onclick="return logout();">退出</a>
+              </p>
+              <div id="tip_comment2" style="color:Red"></div>
+              <p>
+                [Ctrl+Enter快捷键提交]
+              </p>
+              <div style="display:none">
+                <span id="comment_edit_id"></span>
+                <span id="span_parentcomment_id"></span>
+                <span id="span_parent_id"></span>
+                <span id="span_comment_replyto"></span>
+                <span id="span_comment_posted"></span>
+              </div>
+            </div>
+            <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+            <div id="ad_t2">
+              <a href="http://www.ucancode.com/index.htm" target="_blank">【推荐】超50万VC++源码: 大型组态工控、电力仿真CAD与GIS源码库！</a>
+              <br>
+              <a href="http://click.aliyun.com/m/43774/" target="_blank">【缅怀】传奇谢幕，回顾霍金76载传奇人生</a>
+              <br>
+              <a href="https://cloud.tencent.com/act/campus?fromSource=gwzcw.860539.860539.860539" target="_blank">【推荐】腾讯云校园拼团福利，1核2G服务器10元/月！</a>
+              <br>
+              <a href="https://www.yunqi2050.com/#/index" target="_blank">【活动】2050 科技公益大会 - 年青人因科技而团聚</a>
+              <br>
+            </div>
+            <div id="opt_under_post"></div>
+            <div id="cnblogs_c1" class="c_ad_block">
+              <a href="https://market.qcloud.com/act/wangjian/?fromSource=gwzcw.860541.860541.860541" target="_blank">
+                <img width="300" height="250" src="https://images2018.cnblogs.com/news/24442/201803/24442-20180314220122373-1718033865.jpg"
+                  alt="qcloud0314">
+              </a>
+            </div>
+            <div id="under_post_news">
+              <div class="itnews c_ad_block">
+                <b>最新IT新闻</b>:
+                <br> ·
+                <a href="https://news.cnblogs.com/n/592053/" target="_blank">亚马逊招募前FDA高官 为医疗保健业务保驾护航</a>
+                <br> ·
+                <a href="https://news.cnblogs.com/n/592052/" target="_blank">最新专利表明苹果或推无按键键盘</a>
+                <br> ·
+                <a href="https://news.cnblogs.com/n/592051/" target="_blank">谷歌向人工智能硬件公司SambaNova投资5600万美元</a>
+                <br> ·
+                <a href="https://news.cnblogs.com/n/592045/" target="_blank">乔布斯女儿回忆录9月出版 描述童年印象中的父亲</a>
+                <br> ·
+                <a href="https://news.cnblogs.com/n/592043/" target="_blank">高通：原董事长雅各布不会被提名为新董事会成员</a>
+                <br>»
+                <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a>
+              </div>
+            </div>
+            <div id="cnblogs_c2" class="c_ad_block">
+              <a href="http://click.aliyun.com/m/42835/" target="_blank">
+                <img width="468" height="60" src="https://gw.alicdn.com/tfs/TB1mEZFaWmWBuNjy1XaXXXCbXXa-468-60.jpg" alt="阿里云0308">
+              </a>
+            </div>
+            <div id="under_post_kb">
+              <div class="itnews c_ad_block" id="kb_block">
+                <b>最新知识库文章</b>:
+                <br>
+                <div id="kb_recent"> ·
+                  <a href="http://kb.cnblogs.com/page/575255/" target="_blank">写给自学者的入门指南</a>
+                  <br> ·
+                  <a href="http://kb.cnblogs.com/page/578690/" target="_blank">和程序员谈恋爱</a>
+                  <br> ·
+                  <a href="http://kb.cnblogs.com/page/585734/" target="_blank">学会学习</a>
+                  <br> ·
+                  <a href="http://kb.cnblogs.com/page/588938/" target="_blank">优秀技术人的管理陷阱</a>
+                  <br> ·
+                  <a href="http://kb.cnblogs.com/page/590141/" target="_blank">作为一个程序员，数学对你到底有多重要</a>
+                  <br>
+                </div>»
+                <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a>
+              </div>
+            </div>
+            <div id="HistoryToday" class="c_ad_block"></div>
+            <script type="text/javascript">
+              fixPostBody();
+              setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+              deliverAdT2();
+              deliverAdC1();
+              deliverAdC2();
+              loadNewsAndKb();
+              loadBlogSignature();
+              LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+              GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+              loadOptUnderPost();
+              GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+            </script>
+          </div>
+
+
+        </div>
+        <!--end: forFlow -->
+      </div>
+      <!--end: mainContent 主体内容容器-->
+
+      <div id="sideBar">
+        <div id="sideBarMain">
+
+          <!--done-->
+          <div class="newsItem">
+            <h3 class="catListTitle">公告</h3>
+            <div id="blog-news">
+              <div id="profile_block">昵称：
+                <a href="https://home.cnblogs.com/u/dkplus/">dkplus</a>
+                <br>园龄：
+                <a href="https://home.cnblogs.com/u/dkplus/" title="入园时间：2016-12-25">1年2个月</a>
+                <br>粉丝：
+                <a href="https://home.cnblogs.com/u/dkplus/followers/">29</a>
+                <br>关注：
+                <a href="https://home.cnblogs.com/u/dkplus/followees/">2</a>
+                <div id="p_b_follow">
+                  <a href="javascript:void(0);" onclick="follow('85f7974f-90ca-e611-845c-ac853d9f53ac')">+加关注</a>
+                </div>
+                <script>getFollowStatus('85f7974f-90ca-e611-845c-ac853d9f53ac')</script>
+              </div>
+            </div>
+            <script type="text/javascript">loadBlogNews();</script>
+          </div>
+
+          <div id="blog-calendar" style="">
+            <table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+              <tbody>
+                <tr>
+                  <td colspan="7">
+                    <table class="CalTitle" cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td class="CalNextPrev">
+                            <a href="javascript:void(0);" onclick="loadBlogCalendar('2018/02/01');return false;">&lt;</a>
+                          </td>
+                          <td align="center">2018年3月</td>
+                          <td class="CalNextPrev" align="right">
+                            <a href="javascript:void(0);" onclick="loadBlogCalendar('2018/04/01');return false;">&gt;</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+                  <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+                  <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+                  <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+                  <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+                  <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+                  <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+                </tr>
+                <tr>
+                  <td class="CalOtherMonthDay" align="center">25</td>
+                  <td class="CalOtherMonthDay" align="center">26</td>
+                  <td class="CalOtherMonthDay" align="center">27</td>
+                  <td class="CalOtherMonthDay" align="center">28</td>
+                  <td align="center">
+                    <a href="http://www.cnblogs.com/dkplus/archive/2018/03/01.html">
+                      <u>1</u>
+                    </a>
+                  </td>
+                  <td align="center">
+                    <a href="http://www.cnblogs.com/dkplus/archive/2018/03/02.html">
+                      <u>2</u>
+                    </a>
+                  </td>
+                  <td class="CalWeekendDay" align="center">3</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">4</td>
+                  <td align="center">5</td>
+                  <td align="center">6</td>
+                  <td align="center">7</td>
+                  <td align="center">
+                    <a href="http://www.cnblogs.com/dkplus/archive/2018/03/08.html">
+                      <u>8</u>
+                    </a>
+                  </td>
+                  <td align="center">9</td>
+                  <td class="CalWeekendDay" align="center">10</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">11</td>
+                  <td align="center">12</td>
+                  <td align="center">13</td>
+                  <td align="center">14</td>
+                  <td align="center">15</td>
+                  <td align="center">16</td>
+                  <td class="CalTodayDay" align="center">17</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">18</td>
+                  <td align="center">19</td>
+                  <td align="center">20</td>
+                  <td align="center">21</td>
+                  <td align="center">22</td>
+                  <td align="center">23</td>
+                  <td class="CalWeekendDay" align="center">24</td>
+                </tr>
+                <tr>
+                  <td class="CalWeekendDay" align="center">25</td>
+                  <td align="center">26</td>
+                  <td align="center">27</td>
+                  <td align="center">28</td>
+                  <td align="center">29</td>
+                  <td align="center">30</td>
+                  <td class="CalWeekendDay" align="center">31</td>
+                </tr>
+                <tr>
+                  <td class="CalOtherMonthDay" align="center">1</td>
+                  <td class="CalOtherMonthDay" align="center">2</td>
+                  <td class="CalOtherMonthDay" align="center">3</td>
+                  <td class="CalOtherMonthDay" align="center">4</td>
+                  <td class="CalOtherMonthDay" align="center">5</td>
+                  <td class="CalOtherMonthDay" align="center">6</td>
+                  <td class="CalOtherMonthDay" align="center">7</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <script type="text/javascript">loadBlogDefaultCalendar();</script>
+
+          <div id="leftcontentcontainer">
+            <div id="blog-sidecolumn">
+              <div id="sidebar_search" class="sidebar-block"></div>
+              <div id="sidebar_toptags" class="sidebar-block">
+                <div class="catListTag">
+                  <h3 class="catListTitle">我的标签</h3>
+                  <ul>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E5%89%8D%E7%AB%AF/">前端</a>(11)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/canvas/">canvas</a>(3)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/css3%E5%8A%A8%E7%94%BB/">css3动画</a>(3)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E5%B8%83%E5%B1%80/">布局</a>(2)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E6%B5%AE%E5%8A%A8/">浮动</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8/">清除浮动</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/git/">git</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/npm/">npm</a>(1)</li>
+                    <li>
+                      <a href="http://www.cnblogs.com/dkplus/tag/webpack/">webpack</a>(1)</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="sidebar_categories">
+              </div>
+              <div id="sidebar_recentcomments" class="sidebar-block">
+                <div id="recent_comments_wrap">
+                  <div class="catListComment">
+                    <h3 class="catListTitle">最新评论</h3>
+
+                    <div id="RecentCommentsBlock">
+                      <ul>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html#3906687">1. Re:写给后端的前端笔记：定位（position）</a>
+                        </li>
+                        <li class="recent_comment_body">@崔宏宇_chydiv5本来的位置为什么紧贴紧贴在div3的下面最左边-------------------div是块级元素，不把布局改成fixed和absolute的情况下占满一行空间，所以div3......</li>
+                        <li class="recent_comment_author">--dkplus</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html#3906605">2. Re:写给后端的前端笔记：定位（position）</a>
+                        </li>
+                        <li class="recent_comment_body">@dkplus谢谢楼主，再问一下，div5本来的位置为什么紧贴紧贴在div3的下面最左边，另外再问下，楼主你的背影怎么这么炫酷，是怎么做的...</li>
+                        <li class="recent_comment_author">--崔宏宇_chy</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html#3902558">3. Re:用canvas给自己的博客园加背景（一）</a>
+                        </li>
+                        <li class="recent_comment_body">@bob_muse谢谢你的建议，同好加油...</li>
+                        <li class="recent_comment_author">--dkplus</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html#3902541">4. Re:用canvas给自己的博客园加背景（一）</a>
+                        </li>
+                        <li class="recent_comment_body">对于游戏向挺好的，兼顾游戏的装饰性和博客的严肃。不要千人一面嘛。建议：1.背景原点膨胀再快一点，显得流畅。膨胀的再小点，保证背景的层次不要跳。2.留空白按大小主次再调整一下，大板块再空多点，小块再紧凑......</li>
+                        <li class="recent_comment_author">--bob_muse</li>
+                        <li class="recent_comment_title">
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html#3850206">5. Re:canvas动画3：交互</a>
+                        </li>
+                        <li class="recent_comment_body">牛逼啊！</li>
+                        <li class="recent_comment_author">--郑州的文武</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sidebar_topviewedposts" class="sidebar-block">
+                <div id="topview_posts_wrap">
+                  <div class="catListView">
+                    <h3 class="catListTitle">阅读排行榜</h3>
+                    <div id="TopViewPostsBlock">
+                      <ul>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html">1. canvas动画3：交互(1112)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7625511.html">2. 用canvas给自己的博客园加背景（二）(1032)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7613673.html">3. 进入css3动画世界（二）(809)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html">4. 用canvas给自己的博客园加背景（一）(772)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html">5. 写给后端的前端笔记：定位（position）(689)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sidebar_topcommentedposts" class="sidebar-block">
+                <div id="topfeedback_posts_wrap">
+                  <div class="catListFeedback">
+                    <h3 class="catListTitle">评论排行榜</h3>
+                    <div id="TopFeedbackPostsBlock">
+                      <ul>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7625511.html">1. 用canvas给自己的博客园加背景（二）(27)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html">2. canvas动画3：交互(16)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7470043.html">3. 写给后端的前端笔记：定位（position）(10)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7613673.html">4. 进入css3动画世界（二）(6)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html">5. 用canvas给自己的博客园加背景（一）(4)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="sidebar_topdiggedposts" class="sidebar-block">
+                <div id="topdigg_posts_wrap">
+                  <div class="catListView">
+                    <h3 class="catListTitle">推荐排行榜</h3>
+                    <div id="TopDiggPostsBlock">
+                      <ul>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7887482.html">1. canvas动画3：交互(13)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7625511.html">2. 用canvas给自己的博客园加背景（二）(9)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7623642.html">3. 用canvas给自己的博客园加背景（一）(3)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7602284.html">4. 进入css3动画世界（一）(3)</a>
+                        </li>
+                        <li>
+                          <a href="http://www.cnblogs.com/dkplus/p/7613673.html">5. 进入css3动画世界（二）(2)</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <script type="text/javascript">loadBlogSideColumn();</script>
+          </div>
+
+        </div>
+        <!--end: sideBarMain -->
+      </div>
+      <!--end: sideBar 侧边栏容器 -->
+      <div class="clear"></div>
+    </div>
+    <!--end: main -->
+    <div class="clear"></div>
+    <div id="footer">
+
+      <!--done-->
+      Copyright ©2018 dkplus
+    </div>
+    <!--end: footer -->
+  </div>
+  <!--end: home 自定义的最大容器 -->
+
+
+  <script type="text/javascript" src="../dist/app.js"></script>
+</body>
+
+</html>
